@@ -1,1 +1,396 @@
-My Octopress Page is coming soon &hellip;
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>ibo.ezhe</title>
+  <meta name="author" content="Max Korenkov">
+
+  
+  <meta name="description" content="All of you guys use some kind of backups. And if you don&#8217;t you should probably consider that. Daily, weekly, whatever. That really depends on &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mkorenkov.github.com/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="ibo.ezhe" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ibo.ezhe</a></h1>
+  
+    <h2>Hightech notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:mkorenkov.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/cron-daily-doesn-t-run/">cron.daily Doesn&#8217;t Run</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-09T00:00:00+03:00" pubdate data-updated="true">Sep 9<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>All of you guys use some kind of backups. And if you don&#8217;t you should probably consider that. Daily, weekly, whatever. That really depends on the data you have.</p>
+<p>And I&#8217;ve found really weird problem: my daily backup script didn&#8217;t run. I tested it by running manually and it worked fine. I was curious. I&#8217;ve put it into hourly folder. And guess what, still no luck.</p>
+<p>I tried to test it:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo su
+cd / &amp;&amp; run-parts --report /etc/cron.hourly/</pre></div>
+</div>
+
+<p>And there was no output as if it was ignored. Finally, I came across this topic:&nbsp;<a href="http://ubuntuforums.org/showthread.php?t=1692727">http://ubuntuforums.org/showthread.php?t=1692727</a></p>
+<p>Long story short:</p>
+<blockquote class="posterous_medium_quote">
+<p>Unlike some other systems like RedHat/Fedora/etc, run-parts under Debian or Ubuntu systems will ignore files with dots or most other characters in their name, meaning some or all of your scripts in run-parts folders such as /etc/cron.daily will not be run. For example /etc/cron.daily/backup.sh will never be run with the default way that /etc/crontab is set up.</p>
+</blockquote>
+<p>&nbsp;</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/cloud-computing-is-not-an-emerging-technology-anymore/">Cloud Computing Is Not an Emerging Technology Anymore</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-25T00:00:00+03:00" pubdate data-updated="true">Aug 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>I have been reading about Gartner&#8217;s reserches and some other related stuff and have came across a picture of Emergent Technologies. Well, I am not doing some revelations here&#8230;</p>
+<p>Nevertheless, OpenStack folks, looks like cloud computing is in the era of mass adoption.</p>
+<p><img src="/images/articles/gartner.gif" alt="Gartner Hype Cycle for ET" title="Gartner Hype Cycle for Emerging Technologies"/></p>
+<p>Source: <a href="http://commons.wikimedia.org/wiki/File:Gartner_Hype_Cycle_for_Emerging_Technologies.gif">http://commons.wikimedia.org/wiki/File:Gartner_Hype_Cycle_for_Emerging_Techno&#8230;</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/156826323/">О том, каких людей нанимать</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-25T00:00:00+03:00" pubdate data-updated="true">Aug 25<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote>
+<p>Удачный пример привел Дэвид Огилви, легендарный рекламщик и основатель  агентства &laquo;Огилви энд Мейтер&raquo;. На совещании перед каждым руководителем  были разложены матрешки.<br /> По просьбе Огилви руководители открыли своих кукол и обнаружили внутри  каждой куклу поменьше, а в той &mdash; куклу еще меньше, и еще одну, и еще  одну.<br /> Внутрь самой маленькой куколки была вложена записка от Огилви: &laquo;Если  будете принимать на работу только людей мельче себя, мы превратимся в  компанию гномов. И наоборот, если будете принимать работников только  крупнее себя, мы превратимся в компанию великанов&raquo;.</p>
+</blockquote>
+<p>Источник <a href="http://www.hrm.ua/community/blog/1324.html">http://www.hrm.ua/community/blog/1324.html</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/remove-apparmor-ubuntu/">Remove AppArmor Ubuntu</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-17T00:00:00+03:00" pubdate data-updated="true">Aug 17<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>You can remove AppArmor from Ubuntu executing the following commands:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo /etc/init.d/apparmor stop
+sudo update-rc.d -f apparmor remove
+sudo apt-get remove apparmor apparmor-utils -y</pre></div>
+</div>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/145682045/">Прилетело</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-07-12T00:00:00+03:00" pubdate data-updated="true">Jul 12<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote>
+<p>Никогда не упускайте возможность сделать наш скучный мир хоть чуточку интереснее. Например, если вас собьет машина или ударит по башке сосулька, прежде чем потерять сознание/впасть в кому/умереть, успейте прошептать склонившемуся к вам прохожему: &#8220;Передайте членам Сопротивления, что Кальциноиды уже прибыли на Землю. Парапульсатор спрятан в сторожке у лесника. Пароль: &#8220;В лесу, говорят, снова появились хромые лисицы&#8221;&#8230;<br />При этом, конечно, еще хорошо бы сунуть прохожему в ладонь заранее подготовленную флэшку со списком фамилий (желательно латышских) и кусочком видеозаписи, на которой какой-то человек жадно ест корейскую морковь.</p>
+</blockquote>
+<p>Об авторстве этого чуда мне не ведано:&nbsp;<a href="http://www.diary.ru/~quotes/p145523564.htm">http://www.diary.ru/~quotes/p145523564.htm</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/2/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    Included file &#8216;asides/search.html&#8217; not found in _includes directory<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/cron-daily-doesn-t-run/">cron.daily doesn&#8217;t run</a>
+      </li>
+    
+      <li class="post">
+        <a href="/cloud-computing-is-not-an-emerging-technology-anymore/">Cloud Computing is not an Emerging Technology anymore</a>
+      </li>
+    
+      <li class="post">
+        <a href="/156826323/">О том, каких людей нанимать</a>
+      </li>
+    
+      <li class="post">
+        <a href="/remove-apparmor-ubuntu/">Remove AppArmor Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/145682045/">Прилетело</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("ibo_ezhe", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/ibo_ezhe" class="twitter-follow-button" data-show-count="false">Follow @ibo_ezhe</a>
+  
+</section>
+
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/mkorenkov">@mkorenkov</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mkorenkov',
+            count: 10,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Max Korenkov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

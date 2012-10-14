@@ -1,0 +1,311 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>OpenStack testing setup with devstack and tempest - ibo.ezhe</title>
+  <meta name="author" content="Max Korenkov">
+
+  
+  <meta name="description" content="If you have ever made any changes into OpenStack code, you will wonder how to test it. Even if you run unit tests before committing changes, this is &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mkorenkov.github.com/openstack-testing-setup-with-devstack-and-tem/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="ibo.ezhe" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ibo.ezhe</a></h1>
+  
+    <h2>Hightech notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:mkorenkov.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">OpenStack Testing Setup With Devstack and Tempest</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-01T00:00:00+02:00" pubdate data-updated="true">Mar 1<span>st</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you have ever made any changes into <a href="http://openstack.org/">OpenStack</a> code, you will wonder how to test it. Even if you run unit tests before committing changes, this is not enough. Such complex system requires some level of integration testing. There is an OpenStack project called <a href="https://github.com/openstack/tempest">tempest</a>. That is OpenStack integration test suite.</p>
+<p><img src="/images/articles/openstack/logo.jpg" alt="OpenStack logo" title="OpenStack logo" /></p>
+<p>This project is not the first try to do integration tests in OpenStack, however, it selected to be the standard one. It is not yet mature and it leaves some servers running after it is completed.&nbsp;Further more, running tempest takes a lot of time, so it is clear nobody will run it before commit or push.</p>
+<p>Those kind of testing you will probably do via Continious Integration server. And&nbsp;I will describe how to create an isolated test box with <a href="http://vagrantup.com/">vagrant</a>, <a href="http://www.opscode.com/chef/">chef</a> and <a href="http://devstack.org/">devstack</a> for testing purposes.</p>
+<p><!--more--></p>
+<p>If you already have a vagrant installed, you can skip to step #3.</p>
+<p>1. <a href="https://www.virtualbox.org/wiki/Linux_Downloads">Install VirtualBox</a></p>
+<p>2. <a href="http://vagrantup.com/docs/getting-started/index.html">Install Vagrant</a></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo aptitude install ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8 libreadline-ruby1.8 libruby1.8 libopenssl-ruby wget rubygems
+sudo update-alternatives --config ruby
+sudo REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+sudo gem install vagrant</pre></div>
+</div>
+
+<p>3. Adding a base image</p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant box add os-oneiric http://vagrant.mirantis.com/files/os-oneiric.box</pre></div>
+</div>
+
+<p>4. Moving vagrant out of home (optional)</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo mkdir /media/VMs
+sudo chown $USER:root /media/VMs
+mkdir /media/VMs/vagrant/
+mv ~/.vagrant.d/* /media/VMs/vagrant/
+rm -rf ~/.vagrant.d/
+ln -s /media/VMs/vagrant/ ~/.vagrant.d</pre></div>
+</div>
+
+<p>5. Cloning wheel repo</p>
+<div class="CodeRay">
+  <div class="code"><pre>git clone git://github.com/mkorenkov/wheel.git</pre></div>
+</div>
+
+<p>6. Change Vagrantfile</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd wheel
+vim Vagrantfile</pre></div>
+</div>
+
+<p>7. And check the following recipes are enabled</p>
+<div class="CodeRay">
+  <div class="code"><pre>chef.add_recipe &quot;wheel::stack&quot;
+chef.add_recipe &quot;wheel::tempest&quot;</pre></div>
+</div>
+
+<p>8. Run setup</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd wheel
+vagrant up openstack</pre></div>
+</div>
+
+<p>It will automatically install you an OpenStack and run tempest over it. Code of the recipes is pretty simple and comprehensive (available at&nbsp;<a href="https://github.com/mkorenkov/wheel">https://github.com/mkorenkov/wheel</a>).&nbsp;</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Max Korenkov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-03-01T00:00:00+02:00" pubdate data-updated="true">Mar 1<span>st</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mkorenkov.github.com/openstack-testing-setup-with-devstack-and-tem/" data-via="ibo_ezhe" data-counturl="http://mkorenkov.github.com/openstack-testing-setup-with-devstack-and-tem/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/vagrant/" title="Previous Post: Vagrant">&laquo; Vagrant</a>
+      
+      
+        <a class="basic-alignment right" href="/openstack-logical-architecture-essex/" title="Next Post: OpenStack logical architecture - Essex">OpenStack logical architecture - Essex &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    Included file 'asides/search.html' not found in _includes directory<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/cron-daily-doesn-t-run/">cron.daily doesn't run</a>
+      </li>
+    
+      <li class="post">
+        <a href="/cloud-computing-is-not-an-emerging-technology-anymore/">Cloud Computing is not an Emerging Technology anymore</a>
+      </li>
+    
+      <li class="post">
+        <a href="/156826323/">О том, каких людей нанимать</a>
+      </li>
+    
+      <li class="post">
+        <a href="/remove-apparmor-ubuntu/">Remove AppArmor Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/145682045/">Прилетело</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("ibo_ezhe", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/ibo_ezhe" class="twitter-follow-button" data-show-count="false">Follow @ibo_ezhe</a>
+  
+</section>
+
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/mkorenkov">@mkorenkov</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mkorenkov',
+            count: 10,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Max Korenkov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

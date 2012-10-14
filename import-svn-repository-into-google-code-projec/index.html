@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>import svn repository into Google code project hosting - ibo.ezhe</title>
+  <meta name="author" content="Max Korenkov">
+
+  
+  <meta name="description" content="UPD: обнаружил у себя недописанную статью об svnsync. Публикую как есть. &nbsp; С недавнего времени, я стал практически фанатом GitHub. Даже не знаю &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://mkorenkov.github.com/import-svn-repository-into-google-code-projec/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="ibo.ezhe" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">ibo.ezhe</a></h1>
+  
+    <h2>Hightech notes</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:mkorenkov.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Import Svn Repository Into Google Code Project Hosting</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-17T00:00:00+03:00" pubdate data-updated="true">Jun 17<span>th</span>, 2011</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>UPD: обнаружил у себя недописанную статью об svnsync. Публикую как есть.</p>
+<p>&nbsp;</p>
+<p>С недавнего времени, я стал практически фанатом <a href="http://github.com" title="GitHub">GitHub</a>. Даже не знаю, чем он меня подкупил. Просто комфортно.&nbsp;Я сделал импорт практически всех проектов. Но вот незадача: ограничение в 0,3 Gb. Поэтому, например, на лекции, лабораторные и всякую другую хрень, оставшиеся после университета, которые я недавно нашел на одном из серверов, было жалко расходовать этот лимит. <a href="http://code.google.com/hosting/">Project hosting on Google Code</a> предоставляет место более щедро: 4 Gb. В этом посте будет немного тескта о том, как сделать импорт сушествующего репозитория SVN в новый репозиторий на Google code.</p>
+<p>[[posterous-content:lqBAhoIJCftmjdFxdlhj]]</p>
+<p><!--more-->Первым делом, нужно <a href="http://code.google.com/hosting/createProject">создать проект</a>. Далее, перейти на вкладку Source -&gt; Checkout. Внизу страницы будет ссылка <span style="text-decoration: underline;">reset this repository</span>.</p>
+<p>[[posterous-content:vuFyuEivBunBqIDuismh]]</p>
+<p>Будет задан вопрос, насколько мы тверды в наших намерениях. Практически любой вариант ответа подразумевает, что мы не отступим. После этого Google code весело мигнет лампочками, докрутит правильные hooks и даст добро. Далее дело за <a href="http://www.opennet.ru/base/dev/svnsync.txt.html" style="font-weight: bold;">svnsync</a>.</p>
+<p>Последовательность команд следующая: svnsync init, svnsync sync.</p>
+<blockquote>
+<p><span style="color: #008000;">svnsync init DEST_URL SOURCE_URL</span></p>
+<p><span style="color: #008000;">svnsync sync DEST_URL</span></p>
+</blockquote>
+<p>Подробнее можно прочитать, например, вот здесь:&nbsp;<a href="http://www.opennet.ru/base/dev/svnsync.txt.html">http://www.opennet.ru/base/dev/svnsync.txt.html</a></p>
+<p>[[posterous-content:CGguipagryDvmotzjeHC]]</p>
+<p>В какой-то момент может возникнуть ошибка:</p>
+<blockquote>
+<p><span style="color: #008000;">Failed to get lock on destination repos, currently held by &#8216;angelina:f817fda6-1d02-4d71-8c6d-be7880c7c5c7&#8217;</span></p>
+</blockquote>
+<p><span style="color: #000000;">Нужно просто удалить lock с destination репозитория. Например, вот так:</span></p>
+<blockquote>
+<p><span style="color: #008000;">svn propdel svn:sync-lock &#8211;revprop -r 0 <a href="https://university-bullshit.googlecode.com/svn/">https://university-bullshit.googlecode.com/svn/</a></span></p>
+</blockquote>
+<p>И продолжить svnsync sync.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Max Korenkov</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-06-17T00:00:00+03:00" pubdate data-updated="true">Jun 17<span>th</span>, 2011</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://mkorenkov.github.com/import-svn-repository-into-google-code-projec/" data-via="ibo_ezhe" data-counturl="http://mkorenkov.github.com/import-svn-repository-into-google-code-projec/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/github-repo-issues-ownership/" title="Previous Post: GitHub repo issues ownership">&laquo; GitHub repo issues ownership</a>
+      
+      
+        <a class="basic-alignment right" href="/upd-charge-ipadipad2-with-ubuntu/" title="Next Post: UPD. Charge iPad/iPad2 with Ubuntu">UPD. Charge iPad/iPad2 with Ubuntu &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    Included file 'asides/search.html' not found in _includes directory<section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/cron-daily-doesn-t-run/">cron.daily doesn't run</a>
+      </li>
+    
+      <li class="post">
+        <a href="/cloud-computing-is-not-an-emerging-technology-anymore/">Cloud Computing is not an Emerging Technology anymore</a>
+      </li>
+    
+      <li class="post">
+        <a href="/156826323/">О том, каких людей нанимать</a>
+      </li>
+    
+      <li class="post">
+        <a href="/remove-apparmor-ubuntu/">Remove AppArmor Ubuntu</a>
+      </li>
+    
+      <li class="post">
+        <a href="/145682045/">Прилетело</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("ibo_ezhe", 5, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/ibo_ezhe" class="twitter-follow-button" data-show-count="false">Follow @ibo_ezhe</a>
+  
+</section>
+
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/mkorenkov">@mkorenkov</a> on GitHub
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'mkorenkov',
+            count: 10,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Max Korenkov -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

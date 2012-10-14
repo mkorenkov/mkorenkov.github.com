@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[ibo.ezhe]]></title>
+  <link href="http://mkorenkov.github.com/atom.xml" rel="self"/>
+  <link href="http://mkorenkov.github.com/"/>
+  <updated>2012-10-14T20:25:59+03:00</updated>
+  <id>http://mkorenkov.github.com/</id>
+  <author>
+    <name><![CDATA[Max Korenkov]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[cron.daily doesn't run]]></title>
+    <link href="http://mkorenkov.github.com/cron-daily-doesn-t-run/"/>
+    <updated>2012-09-09T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/cron-daily-doesn-t-run</id>
+    <content type="html"><![CDATA[<p>All of you guys use some kind of backups. And if you don&#8217;t you should probably consider that. Daily, weekly, whatever. That really depends on the data you have.</p>
+<p>And I&#8217;ve found really weird problem: my daily backup script didn&#8217;t run. I tested it by running manually and it worked fine. I was curious. I&#8217;ve put it into hourly folder. And guess what, still no luck.</p>
+<p>I tried to test it:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo su
+cd / &amp;&amp; run-parts --report /etc/cron.hourly/</pre></div>
+</div>
+
+<p>And there was no output as if it was ignored. Finally, I came across this topic:&nbsp;<a href="http://ubuntuforums.org/showthread.php?t=1692727">http://ubuntuforums.org/showthread.php?t=1692727</a></p>
+<p>Long story short:</p>
+<blockquote class="posterous_medium_quote">
+<p>Unlike some other systems like RedHat/Fedora/etc, run-parts under Debian or Ubuntu systems will ignore files with dots or most other characters in their name, meaning some or all of your scripts in run-parts folders such as /etc/cron.daily will not be run. For example /etc/cron.daily/backup.sh will never be run with the default way that /etc/crontab is set up.</p>
+</blockquote>
+<p>&nbsp;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Cloud Computing is not an Emerging Technology anymore]]></title>
+    <link href="http://mkorenkov.github.com/cloud-computing-is-not-an-emerging-technology-anymore/"/>
+    <updated>2012-08-25T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/cloud-computing-is-not-an-emerging-technology-anymore</id>
+    <content type="html"><![CDATA[<p>I have been reading about Gartner&#8217;s reserches and some other related stuff and have came across a picture of Emergent Technologies. Well, I am not doing some revelations here&#8230;</p>
+<p>Nevertheless, OpenStack folks, looks like cloud computing is in the era of mass adoption.</p>
+<p><img src="http://mkorenkov.github.com/images/articles/gartner.gif" alt="Gartner Hype Cycle for ET" title="Gartner Hype Cycle for Emerging Technologies"/></p>
+<p>Source: <a href="http://commons.wikimedia.org/wiki/File:Gartner_Hype_Cycle_for_Emerging_Technologies.gif">http://commons.wikimedia.org/wiki/File:Gartner_Hype_Cycle_for_Emerging_Techno&#8230;</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[О том, каких людей нанимать]]></title>
+    <link href="http://mkorenkov.github.com/156826323/"/>
+    <updated>2012-08-25T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/156826323</id>
+    <content type="html"><![CDATA[<blockquote>
+<p>Удачный пример привел Дэвид Огилви, легендарный рекламщик и основатель  агентства &laquo;Огилви энд Мейтер&raquo;. На совещании перед каждым руководителем  были разложены матрешки.<br /> По просьбе Огилви руководители открыли своих кукол и обнаружили внутри  каждой куклу поменьше, а в той &mdash; куклу еще меньше, и еще одну, и еще  одну.<br /> Внутрь самой маленькой куколки была вложена записка от Огилви: &laquo;Если  будете принимать на работу только людей мельче себя, мы превратимся в  компанию гномов. И наоборот, если будете принимать работников только  крупнее себя, мы превратимся в компанию великанов&raquo;.</p>
+</blockquote>
+<p>Источник <a href="http://www.hrm.ua/community/blog/1324.html">http://www.hrm.ua/community/blog/1324.html</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Remove AppArmor Ubuntu]]></title>
+    <link href="http://mkorenkov.github.com/remove-apparmor-ubuntu/"/>
+    <updated>2012-08-17T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/remove-apparmor-ubuntu</id>
+    <content type="html"><![CDATA[<p>You can remove AppArmor from Ubuntu executing the following commands:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo /etc/init.d/apparmor stop
+sudo update-rc.d -f apparmor remove
+sudo apt-get remove apparmor apparmor-utils -y</pre></div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Прилетело]]></title>
+    <link href="http://mkorenkov.github.com/145682045/"/>
+    <updated>2012-07-12T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/145682045</id>
+    <content type="html"><![CDATA[<blockquote>
+<p>Никогда не упускайте возможность сделать наш скучный мир хоть чуточку интереснее. Например, если вас собьет машина или ударит по башке сосулька, прежде чем потерять сознание/впасть в кому/умереть, успейте прошептать склонившемуся к вам прохожему: &#8220;Передайте членам Сопротивления, что Кальциноиды уже прибыли на Землю. Парапульсатор спрятан в сторожке у лесника. Пароль: &#8220;В лесу, говорят, снова появились хромые лисицы&#8221;&#8230;<br />При этом, конечно, еще хорошо бы сунуть прохожему в ладонь заранее подготовленную флэшку со списком фамилий (желательно латышских) и кусочком видеозаписи, на которой какой-то человек жадно ест корейскую морковь.</p>
+</blockquote>
+<p>Об авторстве этого чуда мне не ведано:&nbsp;<a href="http://www.diary.ru/~quotes/p145523564.htm">http://www.diary.ru/~quotes/p145523564.htm</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Рекрутер Владимир]]></title>
+    <link href="http://mkorenkov.github.com/140174892/"/>
+    <updated>2012-06-22T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/140174892</id>
+    <content type="html"><![CDATA[<p>Я в последнее время поражаюсь, насколько тяжело с непрофессионалами. Все начинали, это понятно. Но особенный случай - это когда на голове у такого человека еще и корона.</p>
+<p>Почему, например, не посмотреть профиль в linked.in перед тем, как контактировать с кандидатом. Тот же twitter (упаси господи).</p>
+<p>Ну да ладно. При деловой встрече принято знакомиться и обмениваться визитками: отнюдь не с целью узнать email или номер телефона, - это уже потом. В первую очередь, вы узнаете как зовут человека, в какой компании он работает и какую должность занимает.</p>
+<p>Дальше больше, почему в холодном сообщении часто не содержится информации о вакансии. Почему некоторые считают, что фразы <em>&#8220;Python&#8221;</em> и <em>&#8220;долгосрочный проект&#8221;</em> в одном предложении могут заставить кандидатов строиться в очередь.</p>
+<p>Под катом - скайп чатик.</p>
+<blockquote>
+<p><!--more-->[11:38:24 EEST] HR Recruiter: Максим, добрый день. На долгосрочный проект мы подбираем python developer уровня middle и/или senior. Это может быть Вам интересно?</p>
+<p>[11:45:51 EEST] Max Korenkov: добрый день</p>
+<p>[11:46:02 EEST] Max Korenkov: скажите, пожалуйста, почему это должно быть мне интересно?</p>
+<p>[11:48:47 EEST] HR Recruiter: Мне так же ответить вопросом? ОК. А что для Вас интересно в Вашей работе?</p>
+<p>[11:50:50 EEST] Max Korenkov: для начала, представьтесь, пожалуйста. Как мне к вам обращаться</p>
+<p>[11:54:24 EEST] HR Recruiter: в общем то мы уже начали</p>
+<p>[11:54:37 EEST] HR Recruiter: зовут меня Владимир</p>
+<p>[11:56:44 EEST] HR Recruiter: может приступим к разговору по существу?</p>
+<p>[11:57:50 EEST] Max Korenkov: Владимир. вы ведете себя непрофессионально. Какую компанию вы представляете?</p>
+<p>[11:58:51 EEST] HR Recruiter: нечто подобное я ожидал услышать как только получил ваш первый месседж :)</p>
+<p>[11:59:26 EEST] HR Recruiter: Вы считаете начинать разговор отвечая вопросом на вопрос верхом резговорной этики?</p>
+<p>[12:00:29 EEST] Max Korenkov: итак. Какую компанию вы представляете?</p>
+<p>[12:01:20 EEST] HR Recruiter: я работаю сам на себя, хотите узнать где я живу?</p>
+<p>[12:02:20 EEST] Max Korenkov: пока вы самый непрофессиональный рекрутер, с которым я сталкивался. А я собеседовал больше сотни )</p>
+<p>[12:02:57 EEST] HR Recruiter: к сожалению вы не первый не профессиональный тролль :)</p>
+<p>[12:07:18 EEST] Max Korenkov: Владимир, я ваш потенциальный кандидат, а не троль. С таким отношением к работе вы вряд ли можете быть успешным.</p>
+<p>[12:07:40 EEST] Max Korenkov: Удачи вам в вашем нелегком деле</p>
+<p>[12:07:54 EEST] HR Recruiter: Максим, у меня все в порядке с успехами :)</p>
+<p>[12:11:01 EEST] Max Korenkov: вот и чудненько. удачного дня</p>
+<p>[12:11:19 EEST] HR Recruiter: Вот видите, мы можем ладить :)</p>
+<p>[12:11:20 EEST] * Max Korenkov left the chat (Only people who have accepted contact request can be added).</p>
+</blockquote>
+<p>PS. И да, насчет сотни прособеседованных рекрутеров я спиздел. Человек 40 от силы.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 12.04 Skype tray icon (Gnome 3)]]></title>
+    <link href="http://mkorenkov.github.com/ubuntu-1204-skype-tray-icon-gnome-3/"/>
+    <updated>2012-06-02T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/ubuntu-1204-skype-tray-icon-gnome-3</id>
+    <content type="html"><![CDATA[<p>Enabling Skype notification icon for Gnome 3 is a bit more difficult, than for <a href="http://korenkov.info/ubuntu-1204-skype-tray-icon">Unity</a>. Anyway, here how you do it.</p>
+<p><!--more--></p>
+<div class="CodeRay">
+  <div class="code"><pre>install gnome-tweak-tool mkdir ~/.local/share/gnome-shell/extensions/skype-status</pre></div>
+</div>
+
+<p>Edit <strong>~/.local/share/gnome-shell/extensions/skype-status/extension.js</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>nano ~/.local/share/gnome-shell/extensions/skype-status/extension.js</pre></div>
+</div>
+
+<p>And paste the following</p>
+<div class="CodeRay">
+  <div class="code"><pre>const StatusIconDispatcher = imports.ui.statusIconDispatcher;
+function enable() {
+    StatusIconDispatcher.STANDARD_TRAY_ICON_IMPLEMENTATIONS['skype'] = 'skype';
+}
+function disable() {
+    StatusIconDispatcher.STANDARD_TRAY_ICON_IMPLEMENTATIONS['skype'] = '';
+}
+function init() {
+}</pre></div>
+</div>
+
+<p>Now edit <strong>~/.local/share/gnome-shell/extensions/skype-status/metadata.json</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>nano ~/.local/share/gnome-shell/extensions/skype-status/metadata.json</pre></div>
+</div>
+
+<p>And insert</p>
+<div class="CodeRay">
+  <div class="code"><pre>{
+  &quot;shell-version&quot;: [&quot;3.4.1&quot;, &quot;3.2.1&quot;, &quot;3.2&quot;],
+  &quot;uuid&quot;: &quot;skype-status&quot;,
+  &quot;name&quot;: &quot;Skype Status Icon&quot;,
+  &quot;description&quot;: &quot;Integrates Skype Client into the status bar&quot;
+}</pre></div>
+</div>
+
+<p>where shell-version parameter corresponds to your current gnome shell version.</p>
+<p>You can find additional shell extensions after your Gnome 3 session is restarted. See Applications -&gt; Advanced Settings -&gt; Shell Extensions:</p>
+<p><img src="http://mkorenkov.github.com/images/articles/Skype-Icon-Extension.png" alt="Skype-Icon-Extension" title="Skype-Icon-Extension" /></p>
+<p>Turn it on and restart your session again. By the way, the same trick works for Pidgin as well. Source:&nbsp;<a href="http://habrahabr.ru/post/134542/">http://habrahabr.ru/post/134542/</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 12.04 Skype tray icon (Unity)]]></title>
+    <link href="http://mkorenkov.github.com/ubuntu-1204-skype-tray-icon/"/>
+    <updated>2012-06-02T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/ubuntu-1204-skype-tray-icon</id>
+    <content type="html"><![CDATA[<p>This trick is valid for Ubuntu 12.04 as well (<a href="http://korenkov.info/ubuntu-1110-skype-notification-icon">http://korenkov.info/ubuntu-1110-skype-notification-icon</a>)</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install dconf-tools
+dconf-editor</pre></div>
+</div>
+
+<p>Modify <strong>systray-whitelist</strong> option in <strong>desktop -&gt; unity -&gt; panel</strong> section. E.g.:</p>
+<div class="CodeRay">
+  <div class="code"><pre>['Guake', 'Skype', 'Dropbox', 'JavaEmbeddedFrame', 'Wine', 'Update-notifier']</pre></div>
+</div>
+
+<p>After you restart you session, Skype icon should be available.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Disable the Universal Access accessibility menu in Gnome 3]]></title>
+    <link href="http://mkorenkov.github.com/disable-the-universal-access-accessibility-me/"/>
+    <updated>2012-06-02T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/disable-the-universal-access-accessibility-me</id>
+    <content type="html"><![CDATA[<p>The only way I found to edit the file&nbsp;/usr/share/gnome-shell/js/ui/panel.js</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo nano /usr/share/gnome-shell/js/ui/panel.js</pre></div>
+</div>
+
+<p>And comment (or remove) all the lines, that look like this:</p>
+<div class="CodeRay">
+  <div class="code"><pre>'a11y': imports.ui.status.accessibility.ATIndicator,</pre></div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[uTorrent for Ubuntu 12.04]]></title>
+    <link href="http://mkorenkov.github.com/utorrent-for-ubuntu-1204/"/>
+    <updated>2012-06-01T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/utorrent-for-ubuntu-1204</id>
+    <content type="html"><![CDATA[<p>Couple of weeks ago I was facinated when I heard <a href="http://www.utorrent.com/downloads/complete?os=linux">uTorrent</a> is available for Ubuntu. However, it was a bit strange to find out that there are no official setup instructions, so I came up with my own.</p>
+<p>1. Visit <a href="http://www.utorrent.com/downloads/complete?os=linux">http://www.utorrent.com/downloads/complete?os=linux</a> and download the archive.</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd /tmp
+wget http://download.utorrent.com/linux/utorrent-server-3.0-ubuntu-10.10-27079.tar.gz</pre></div>
+</div>
+
+<p>2. Extract it and move into appropriate place</p>
+<div class="CodeRay">
+  <div class="code"><pre>tar -xzf utorrent-server-3.0-ubuntu-10.10-27079.tar.gz
+sudo mv utorrent-server-v3_0 /usr/local/
+cd /usr/local
+ln -s utorrent-server-v3_0 utorrent-server</pre></div>
+</div>
+
+<p>3. Run It</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd /usr/local/utorrent-server &amp;&amp; sudo nohup sg users -c ./utserver &amp;</pre></div>
+</div>
+
+<p>uTorrent server doesn&#8217;t have a GUI except for WebUI. Now you can visit <a href="http://localhost:8080/gui/">http://localhost:8080/gui/</a></p>
+<blockquote>
+<p>User: admin</p>
+<p>Password:</p>
+</blockquote>
+<p>You&#8217;re welcome.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Oracle Java7 for Ubuntu 12.04]]></title>
+    <link href="http://mkorenkov.github.com/oracle-java7-for-ubuntu-1204/"/>
+    <updated>2012-06-01T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/oracle-java7-for-ubuntu-1204</id>
+    <content type="html"><![CDATA[<p>Install Oracle Java 7 in Ubuntu via PPA</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo add-apt-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java7-installer</pre></div>
+</div>
+
+<p>Found at <a href="http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html">webupd8.org</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[nopasswd for sudoers]]></title>
+    <link href="http://mkorenkov.github.com/nopasswd-for-sudoers/"/>
+    <updated>2012-05-06T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/nopasswd-for-sudoers</id>
+    <content type="html"><![CDATA[<p>Сделать sudo беспарольным операция вполне обычная. Но я как-то устал каждый раз набирать в гугле что да как.</p>
+<p>1. Добавляем себя в sudo группу для Ubuntu. (для Fedora можно wheel)</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo usermod -a -G sudo $USER</pre></div>
+</div>
+
+<p>2. Редактируем /etc/sudoers</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo vim /etc/sudoers</pre></div>
+</div>
+
+<p>строчка с %sudo должна принять вид. (для Fedora %wheel опять-же)</p>
+<div class="CodeRay">
+  <div class="code"><pre>%sudo ALL=(ALL) NOPASSWD: ALL</pre></div>
+</div>
+
+<p>Спасибонезачто.</p>
+<p>&nbsp;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Generate password Ubuntu]]></title>
+    <link href="http://mkorenkov.github.com/generate-password-ubuntu/"/>
+    <updated>2012-05-06T00:00:00+03:00</updated>
+    <id>http://mkorenkov.github.com/generate-password-ubuntu</id>
+    <content type="html"><![CDATA[<p>Для тех, кто не хочет знать свой пароль есть утилита apg.</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install apg</pre></div>
+</div>
+
+<p>Теперь попробоуем сгенерить себе новый пароль:</p>
+<div class="CodeRay">
+  <div class="code"><pre>hello@world-server:~$ apg
+Please enter some random data (only first 16 are significant)
+(eg. your old password):&gt;
+bontIfDooj6 (bont-If-Dooj-SIX)
+Mocnudkidd5 (Moc-nud-kidd-FIVE)
+mifojElWolt5 (mif-oj-El-Wolt-FIVE)
+epidpaj5Od1 (ep-id-paj-FIVE-Od-ONE)
+BufShegyus4 (Buf-Sheg-yus-FOUR)
+HygunEld6 (Hyg-un-Eld-SIX)</pre></div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[ipad_charge util updated]]></title>
+    <link href="http://mkorenkov.github.com/ipadcharge-util-updated/"/>
+    <updated>2012-03-22T00:00:00+02:00</updated>
+    <id>http://mkorenkov.github.com/ipadcharge-util-updated</id>
+    <content type="html"><![CDATA[<blockquote>
+<p><em><span style="font-size: medium; color: #333399;">UPD. Permanently moved to:&nbsp;<a href="http://korenkov.info/pages/ipad-charge">http://korenkov.info/pages/ipad-charge</a></span></em></p>
+</blockquote>
+<p><img src="http://mkorenkov.github.com/images/articles/ipad/ipad3.jpg" alt="iPad charge" title="iPad charge" /></p>
+<p>ipad_charge util (<a href="https://github.com/mkorenkov/ipad_charge">https://github.com/mkorenkov/ipad_charge</a>) was updated.</p>
+<p>Now it supports iPad 3 among other devices. Full list of supported devices:</p>
+<ul>
+<li>iPad</li>
+<li>iPad2</li>
+<li>iPad3</li>
+<li>iPod Touch 2G</li>
+<li>iPod Touch 3G</li>
+<li>iPod Touch 4G</li>
+<li>iPhone 3GS</li>
+<li>iPhone 4</li>
+<li>iPhone 4S</li>
+</ul>
+<p>Installation guide:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo aptitude install libusb-1.0-0 libusb-1.0-0-dev
+git clone https://github.com/mkorenkov/ipad_charge.git
+cd ./ipad_charge
+make
+sudo make install</pre></div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OS X in VirtualBox - fix resolution]]></title>
+    <link href="http://mkorenkov.github.com/os-x-in-virtualbox-fix-resolution/"/>
+    <updated>2012-03-10T00:00:00+02:00</updated>
+    <id>http://mkorenkov.github.com/os-x-in-virtualbox-fix-resolution</id>
+    <content type="html"><![CDATA[<p>There&#8217;s an easy way to fix resolution of your guest VirtualMachine.</p>
+<p>You should execute something like the following command on your host machine:</p>
+<div class="CodeRay">
+  <div class="code"><pre>VBoxManage setextradata osx CustomVideoMode1 &quot;1920x1080x32&quot;</pre></div>
+</div>
+
+<p>Where &#8220;osx&#8221; is your virtual machine name and &#8220;1920x1080x32&#8221; is your target resolution.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OpenStack logical architecture - Essex]]></title>
+    <link href="http://mkorenkov.github.com/openstack-logical-architecture-essex/"/>
+    <updated>2012-03-08T00:00:00+02:00</updated>
+    <id>http://mkorenkov.github.com/openstack-logical-architecture-essex</id>
+    <content type="html"><![CDATA[<p>I started to look for some picture of OpenStack components since the moment I started to work with it.&nbsp;And a few days ago I was shown this awesome diagram:</p>
+<p><img src="http://mkorenkov.github.com/images/articles/openstack/nova-logical-arch-essex.jpg" alt="OpenStack Logical Architecture" title="Ken Pepple's famous Essex diagram" /></p>
+<p>The rest of the article is available here&nbsp;<a href="http://ken.pepple.info/openstack/2012/02/21/revisit-openstack-architecture-diablo/">http://ken.pepple.info/openstack/2012/02/21/revisit-openstack-architecture-diablo/</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[OpenStack testing setup with devstack and tempest]]></title>
+    <link href="http://mkorenkov.github.com/openstack-testing-setup-with-devstack-and-tem/"/>
+    <updated>2012-03-01T00:00:00+02:00</updated>
+    <id>http://mkorenkov.github.com/openstack-testing-setup-with-devstack-and-tem</id>
+    <content type="html"><![CDATA[<p>If you have ever made any changes into <a href="http://openstack.org/">OpenStack</a> code, you will wonder how to test it. Even if you run unit tests before committing changes, this is not enough. Such complex system requires some level of integration testing. There is an OpenStack project called <a href="https://github.com/openstack/tempest">tempest</a>. That is OpenStack integration test suite.</p>
+<p><img src="http://mkorenkov.github.com/images/articles/openstack/logo.jpg" alt="OpenStack logo" title="OpenStack logo" /></p>
+<p>This project is not the first try to do integration tests in OpenStack, however, it selected to be the standard one. It is not yet mature and it leaves some servers running after it is completed.&nbsp;Further more, running tempest takes a lot of time, so it is clear nobody will run it before commit or push.</p>
+<p>Those kind of testing you will probably do via Continious Integration server. And&nbsp;I will describe how to create an isolated test box with <a href="http://vagrantup.com/">vagrant</a>, <a href="http://www.opscode.com/chef/">chef</a> and <a href="http://devstack.org/">devstack</a> for testing purposes.</p>
+<p><!--more--></p>
+<p>If you already have a vagrant installed, you can skip to step #3.</p>
+<p>1. <a href="https://www.virtualbox.org/wiki/Linux_Downloads">Install VirtualBox</a></p>
+<p>2. <a href="http://vagrantup.com/docs/getting-started/index.html">Install Vagrant</a></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo aptitude install ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8 libreadline-ruby1.8 libruby1.8 libopenssl-ruby wget rubygems
+sudo update-alternatives --config ruby
+sudo REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+sudo gem install vagrant</pre></div>
+</div>
+
+<p>3. Adding a base image</p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant box add os-oneiric http://vagrant.mirantis.com/files/os-oneiric.box</pre></div>
+</div>
+
+<p>4. Moving vagrant out of home (optional)</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo mkdir /media/VMs
+sudo chown $USER:root /media/VMs
+mkdir /media/VMs/vagrant/
+mv ~/.vagrant.d/* /media/VMs/vagrant/
+rm -rf ~/.vagrant.d/
+ln -s /media/VMs/vagrant/ ~/.vagrant.d</pre></div>
+</div>
+
+<p>5. Cloning wheel repo</p>
+<div class="CodeRay">
+  <div class="code"><pre>git clone git://github.com/mkorenkov/wheel.git</pre></div>
+</div>
+
+<p>6. Change Vagrantfile</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd wheel
+vim Vagrantfile</pre></div>
+</div>
+
+<p>7. And check the following recipes are enabled</p>
+<div class="CodeRay">
+  <div class="code"><pre>chef.add_recipe &quot;wheel::stack&quot;
+chef.add_recipe &quot;wheel::tempest&quot;</pre></div>
+</div>
+
+<p>8. Run setup</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd wheel
+vagrant up openstack</pre></div>
+</div>
+
+<p>It will automatically install you an OpenStack and run tempest over it. Code of the recipes is pretty simple and comprehensive (available at&nbsp;<a href="https://github.com/mkorenkov/wheel">https://github.com/mkorenkov/wheel</a>).&nbsp;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant]]></title>
+    <link href="http://mkorenkov.github.com/vagrant/"/>
+    <updated>2012-02-11T00:00:00+02:00</updated>
+    <id>http://mkorenkov.github.com/vagrant</id>
+    <content type="html"><![CDATA[<p>Сел разбираться с <a href="http://www.opscode.com/chef/">Chef</a>. Первый рецепт готов. Пора проверять&#8230; но где?</p>
+<p>Отладить на домашнем десктопе - неправильно, снесу - что-нибудь, жалко будет. Значит, запускаем <a href="https://www.virtualbox.org/">VirtualBox</a> и плодим виртуалки. Но когда это восьмая и девятая, начинаешь задумываться - а нет ли management механизма для этого.&nbsp;</p>
+<p><img src="http://mkorenkov.github.com/img/articles/vagrant_chilling.png" alt="Vagrant logo" title="Vagrant logo" /></p>
+<p>Особо циничный читатель уже понимает, что такой механизм есть и именно о нем я собираюсь рассказать в текущем посте.</p>
+<p><!--more--></p>
+<p>Vagrant - это ruby gem для управления машинками VirtualBox. Но особая его прелесть в том, что он из коробки поддерживает Puppet и Chef. Это превращает его просто в must-have tool. Например, так можно поднять VM с Ubuntu 10.04:</p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+vagrant init lucid32
+vagrant up</pre></div>
+</div>
+
+<p>При этом, базовый образ скачается только 1 раз.</p>
+<p>Итак, инсталляция:</p>
+<p><strong>1. Установка <a href="https://www.virtualbox.org/wiki/Linux_Downloads">VirtualBox</a></strong></p>
+<p><strong>2. Vagrant</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo aptitude install ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8 libreadline-ruby1.8 libruby1.8 libopenssl-ruby wget rubygems
+sudo update-alternatives --config ruby
+sudo REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+sudo gem install vagrant</pre></div>
+</div>
+
+<p><strong>3. Зарегистрируем базовый image</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant box add lucid32 http://files.vagrantup.com/lucid32.box</pre></div>
+</div>
+
+<p><strong>4. Переместим Vagrant из home директории в более концептуальное место</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo mkdir /media/VMs
+sudo chown $USER:root /media/VMs
+mkdir /media/VMs/vagrant/
+mv ~/.vagrant.d/* /media/VMs/vagrant/
+rm -rf ~/.vagrant.d/
+ln -s /media/VMs/vagrant/ ~/.vagrant.d</pre></div>
+</div>
+
+<p><strong>5. Запуск</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant init lucid32
+vagrant up</pre></div>
+</div>
+
+<p>После запуска, вы увидите сообщение с портом, на который форвардится ssh вновь созданной VM. Заходим (пароль <strong>vagrant</strong>):</p>
+<div class="CodeRay">
+  <div class="code"><pre>ssh vagrant@127.0.0.1 -p 2222</pre></div>
+</div>
+
+<p>Для создания базовых образов можно воспользоваться следующитми руководствами:</p>
+<ul>
+<li><a href="http://www.yodi.me/blog/2011/10/26/build-base-box-vagrant-ubuntu-oneiric-11.10-server/">http://www.yodi.me/blog/2011/10/26/build-base-box-vagrant-ubuntu-oneiric-11.10-server/</a></li>
+<li><a href="http://vagrantup.com/docs/base_boxes.html">http://vagrantup.com/docs/base_boxes.html</a></li>
+</ul>
+<p>Или воспользоваться уже существующей коллекцией: <a href="http://vagrantbox.es/">http://vagrantbox.es/</a>.</p>
+<p><strong>UPD:</strong></p>
+<p><iframe src="http://player.vimeo.com/video/9976342?title=0&amp;byline=0&amp;portrait=0" frameborder="0" height="225" width="400"></iframe></p>
+<p><a href="http://vimeo.com/9976342">Vagrant - Getting Started</a> from <a href="http://vimeo.com/mitchellh">Mitchell Hashimoto</a> on <a href="http://vimeo.com">Vimeo</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ubuntu 11.10 x64 fix Skype after update]]></title>
+    <link href="http://mkorenkov.github.com/ubuntu-1110-x64-fix-skype-after-update/"/>
+    <updated>2012-01-31T00:00:00+02:00</updated>
+    <id>http://mkorenkov.github.com/ubuntu-1110-x64-fix-skype-after-update</id>
+    <content type="html"><![CDATA[<p>После апдейта поломался скайп. Падает с ошибкой</p>
+<div class="CodeRay">
+  <div class="code"><pre>skype: error while loading shared libraries: libXss.so.1: cannot open shared object file: No such file or directory</pre></div>
+</div>
+
+<p>Есть зарепорченый баг в launchpad:&nbsp;<a href="https://bugs.launchpad.net/ubuntu/+source/ia32-libs/+bug/830440">https://bugs.launchpad.net/ubuntu/+source/ia32-libs/+bug/830440</a></p>
+<p>Лечить так:</p>
+<div class="CodeRay">
+  <div class="code"><pre>echo foreign-architecture i386 | sudo tee /etc/dpkg/dpkg.cfg.d/multiarch
+sudo apt-get install libxss1:i386 libqtcore4:i386 libqt4-dbus:i386 libqtgui4:i386</pre></div>
+</div>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fetching updates from another git repo]]></title>
+    <link href="http://mkorenkov.github.com/fetching-updates-from-another-git-repo/"/>
+    <updated>2012-01-30T00:00:00+02:00</updated>
+    <id>http://mkorenkov.github.com/fetching-updates-from-another-git-repo</id>
+    <content type="html"><![CDATA[<p>Original article:&nbsp;<a href="http://bassistance.de/2010/06/25/git-fu-updating-your-github-fork/">http://bassistance.de/2010/06/25/git-fu-updating-your-github-fork/</a></p>
+<p>Чувствую, еще не раз пригодится. Обновить source код вашего fork репозитория можно так:</p>
+<div class="CodeRay">
+  <div class="code"><pre>git remote add --track master source git://github.com/openstack/tempest.git
+git fetch source
+git merge source/master
+git push</pre></div>
+</div>
+]]></content>
+  </entry>
+  
+</feed>
