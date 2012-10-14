@@ -28,6 +28,41 @@
   <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
 <link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<!-- Load jQuery -->
+<script type="text/javascript">
+    $.noConflict();
+</script>
+<script src="/javascripts/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    jQuery.noConflict(); // ender.js conflicts with jQuery
+</script>
+
+<!-- Load FancyBox -->
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" />
+<script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+<!-- Fix FancyBox style for OctoPress -->
+<style type="text/css">
+  .fancybox-wrap { position: fixed !important; }
+  .fancybox-opened {
+    -webkit-border-radius: 4px !important;
+       -moz-border-radius: 4px !important;
+            border-radius: 4px !important;
+  }
+  .fancybox-close, .fancybox-prev span, .fancybox-next span {
+    background-color: transparent !important;
+    border: 0 !important;
+  }
+</style>
+
+
+<!-- Custom Scripts -->
+<script language="Javascript" type="text/javascript">
+    // ender.js gobbles jQuery's ready event: Use ender.js $ instead
+    $(document).ready(function() {
+        jQuery(".fancybox").fancybox();
+    });
+</script>
 
   
 
@@ -37,29 +72,23 @@
   <header role="banner"><hgroup>
   <h1><a href="/">ibo.ezhe</a></h1>
   
-    <h2>Hightech notes</h2>
+    <h2>
+      Hightech notes
+      <a href="/atom.xml" title="subscribe via RSS"><img src="/images/rss.png" alt="RSS" title="RSS" /></a>
+    </h2>
   
 </hgroup>
 
-</header>
-  <nav role="navigation"><ul class="subscription" data-subscription="rss">
-  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
-  
-</ul>
-  
-<form action="http://google.com/search" method="get">
-  <fieldset role="search">
-    <input type="hidden" name="q" value="site:mkorenkov.github.com" />
-    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
-  </fieldset>
-</form>
-  
+
+    <nav role="navigation">
 <ul class="main-navigation">
-  <li><a href="/">Blog</a></li>
-  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/" class="navigation-url">Blog</a></li>
+  <li><a href="/archives" class="navigation-url">Archives</a></li>
 </ul>
 
 </nav>
+  </header>
+  
   <div id="main">
     <div id="content">
       <div>
@@ -92,19 +121,9 @@
 
 <div class="entry-content"><p>Вчера вернулись из <a href="http://picasaweb.google.com/ibo.ezhe/Zakopane2011#">поездки в Zakopane</a>. Поэтому спешу поделиться впечатлениями, пока они свежи.&nbsp;</p>
 <p>В этом посте будет много слов про снег, горы, трассы, которые мы успели и не успели попробовать, и совсем немного про культуру и уровень жизни. А также лучи ненависти нашему оператору, перевозчикам и прочим.</p>
-{% gallery %}
-/images/articles/zakopane/SDC14232.JPG
-/images/articles/zakopane/SDC14244.JPG
-/images/articles/zakopane/SDC14228.JPG
-/images/articles/zakopane/SDC14083.JPG
-/images/articles/zakopane/SDC14035.JPG
-/images/articles/zakopane/SDC14038.JPG
-/images/articles/zakopane/SDC14040.JPG
-/images/articles/zakopane/SDC14128.JPG
-/images/articles/zakopane/SDC14138.JPG
-/images/articles/zakopane/SDC14144.JPG
-/images/articles/zakopane/SDC14288.JPG
-{% endgallery %}
+<ul class="gallery">
+<li><a href="/images/articles/zakopane/SDC14232.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14232.JPG"><img src="/images/articles/zakopane/SDC14232.JPG" alt="SDC14232.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14244.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14244.JPG"><img src="/images/articles/zakopane/SDC14244.JPG" alt="SDC14244.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14228.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14228.JPG"><img src="/images/articles/zakopane/SDC14228.JPG" alt="SDC14228.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14083.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14083.JPG"><img src="/images/articles/zakopane/SDC14083.JPG" alt="SDC14083.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14035.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14035.JPG"><img src="/images/articles/zakopane/SDC14035.JPG" alt="SDC14035.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14038.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14038.JPG"><img src="/images/articles/zakopane/SDC14038.JPG" alt="SDC14038.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14040.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14040.JPG"><img src="/images/articles/zakopane/SDC14040.JPG" alt="SDC14040.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14128.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14128.JPG"><img src="/images/articles/zakopane/SDC14128.JPG" alt="SDC14128.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14138.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14138.JPG"><img src="/images/articles/zakopane/SDC14138.JPG" alt="SDC14138.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14144.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14144.JPG"><img src="/images/articles/zakopane/SDC14144.JPG" alt="SDC14144.JPG" style="width: 220px;"/></a></li><li><a href="/images/articles/zakopane/SDC14288.JPG" class="fancybox" rel="gallery-b6dd6b93c4b51a82b713dddc9432adcd" title="SDC14288.JPG"><img src="/images/articles/zakopane/SDC14288.JPG" alt="SDC14288.JPG" style="width: 220px;"/></a></li>
+</ul>
 <p><!--more-->Тур назывался &#8220;Рождество в Закопане&#8221; и должен был включать в себя проезд на комфотабельном автобусе, проживание, двухразовое питание, ежедневный трансфер к горкам и обратно, экскурсию по Кракову. В последний момент автобус изменился на плацкартный билет в поезде, ну да ладно, впереди горы, поэтому мы не обратили особого внимания на это досадное мероприятие. В поезде нас ждал новый сюрприз - трансфер к горкам как-то отменился. Дорога заняла часов на 12 дольше предусмотренного и из времени наших покатушек вычеркнулся день. К слову сказать, экскурсия по Кракову также не состоялась по причинам водителей - тормозов, очередей на таможне и общей неорганизованности туроператора &#8221;<a href="http://www.ittour.com.ua/">IT-tour</a>&#8221;. В общем, я крайне <strong>не</strong> рекомендую пользоваться их услугами.</p>
 <p>То, что было на высшем уровне - это горы и город. Zakopane - это небольшой городок с населением около 30 000 человек на юге Польши. Несмотря на свой размер, город обладает всей необходимой инфраструктурой для вполне комфортного времяпровождения. Центральная улица - Krup&oacute;wki - является пешеходной. На ней расположена масса пабов, магазинов (или как их называют в Польше, sklepov), киосков, супермаркетов и упирается она в рынок. Цены, несмотря на то, что город курортный, обычно отличаются в меньшую сторону от привычных Харьковских. Порции огромные, двойную можно смело есть втроем.</p>
 <p>Народ в основном приятный, приветливый. Многие говорят по-русски, хотя в последнее время, считаю это скорее минусом. Предпочитал общаться на украинском или английском. И только в одном случае столкнулся с языковой проблемой - в одном из супермаркетов кассир отказывалась воспринимать любой из вышеперечисленных языков. Думаю, это было единственным проявлением шовинизма и ксенофобии. К слову, любые числительные, которые она называла звучали как &#8220;двешти&#8221;, будь то двадцать два, сорок или стодвадцать злот.&nbsp;</p>
@@ -172,7 +191,16 @@
 
 <aside class="sidebar">
   
-    Included file 'asides/search.html' not found in _includes directory<section>
+    
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:mkorenkov.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+
+<section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
     
@@ -254,13 +282,13 @@
 
 
     </div>
-  </div>
-  <footer role="contentinfo"><p>
+    <footer role="contentinfo"><p>
   Copyright &copy; 2012 - Max Korenkov -
   <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
 </p>
 
 </footer>
+  </div>
   
 
 
