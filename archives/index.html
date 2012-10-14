@@ -55,9 +55,11 @@ Aug 25 2012 О том, каких людей &hellip;">
 <script language="Javascript" type="text/javascript">
     jQuery.noConflict(); // ender.js conflicts with jQuery
     // ender.js gobbles jQuery's ready event: Use ender.js $ instead
-    $(document).ready(function() {
+    function bind_fancybox(){
         jQuery(".fancybox").fancybox();
-    });
+    }
+
+    jQuery(document).ready(bind_fancybox);
 </script>
 
   
