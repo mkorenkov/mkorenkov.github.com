@@ -1,0 +1,31 @@
+---
+layout: post
+title: uTorrent for Ubuntu 12.04
+published: true
+---
+<p>Couple of weeks ago I was facinated when I heard <a href="http://www.utorrent.com/downloads/complete?os=linux">uTorrent</a> is available for Ubuntu. However, it was a bit strange to find out that there are no official setup instructions, so I came up with my own.</p>
+<p>1. Visit <a href="http://www.utorrent.com/downloads/complete?os=linux">http://www.utorrent.com/downloads/complete?os=linux</a> and download the archive.</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd /tmp
+wget http://download.utorrent.com/linux/utorrent-server-3.0-ubuntu-10.10-27079.tar.gz</pre></div>
+</div>
+
+<p>2. Extract it and move into appropriate place</p>
+<div class="CodeRay">
+  <div class="code"><pre>tar -xzf utorrent-server-3.0-ubuntu-10.10-27079.tar.gz
+sudo mv utorrent-server-v3_0 /usr/local/
+cd /usr/local
+ln -s utorrent-server-v3_0 utorrent-server</pre></div>
+</div>
+
+<p>3. Run It</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd /usr/local/utorrent-server &amp;&amp; sudo nohup sg users -c ./utserver &amp;</pre></div>
+</div>
+
+<p>uTorrent server doesn't have a GUI except for WebUI. Now you can visit <a href="http://localhost:8080/gui/">http://localhost:8080/gui/</a></p>
+<blockquote>
+<p>User: admin</p>
+<p>Password:</p>
+</blockquote>
+<p>You're welcome.</p>

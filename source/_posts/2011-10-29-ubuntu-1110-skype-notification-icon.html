@@ -1,0 +1,12 @@
+---
+layout: post
+title: Ubuntu 11.10 Skype notification icon
+published: true
+---
+<p>Поставил себе скайп. Столкнулся с тем, что его индикатор не появился на панельке. Если вы его пользовали под Ubuntu, вы понимаете, что без этого индикатора счастья не будет. Выводы касательно качества Ubuntu или продуктов одной-известной-компании оставим другим, у нас задача другая.</p>
+<pre>sudo apt-get install dconf-tools
+dconf-editor</pre>
+<p>Переходим <strong>desktop -&gt; unity -&gt; panel</strong> и редактируем значение для <strong>systray-whitelist</strong>, добавляя Skype. У меня получилось вот так:</p>
+<pre>['Skype', 'Dropbox', 'JavaEmbeddedFrame', 'Wine', 'scp-dbus-service', 'Update-notifier']</pre>
+<p>Далее, запускаем:</p>
+<pre>nohup unity --replace &amp;</pre>

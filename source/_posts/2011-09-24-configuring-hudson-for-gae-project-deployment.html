@@ -1,0 +1,53 @@
+---
+layout: post
+title: Configuring Hudson for GAE project deployment
+published: true
+---
+<h2>Hudson</h2>
+<p>Hudson is a continuous integration (CI) tool written in Java, which  runs in a servlet container, such as Apache Tomcat or the GlassFish  application server. It supports SCM tools including CVS, Subversion, Git  and Clearcase and can execute Apache Ant and Apache Maven based  projects, as well as arbitrary shell scripts and Windows batch commands.</p>
+<p>Unfortunately, you can try it difficult to use with Google App Engine projects.</p>
+<p>[[posterous-content:GFbysmaFnJAkpDHwzpgB]]</p>
+<p><!--more--></p>
+<h2>Installing Hudson</h2>
+<p>Installing Hudson is easy for major Linux distributives:</p>
+<ul>
+<li><a href="http://wiki.hudson-ci.orghttp//wiki.hudson-ci.org/display/HUDSON/Installing+Hudson/display/HUDSON/Installing+Hudson+on+Ubuntu" class="external-link" rel="nofollow">Debian/Ubuntu</a></li>
+<li><a href="http://wiki.hudson-ci.org/display/HUDSON/Installing+Hudson+using+RPM+repository" class="external-link" rel="nofollow">Fedora/CentOS/etc</a></li>
+</ul>
+<p>For more information, please visit <a href="http://wiki.hudson-ci.org/display/HUDSON/Installing+Hudson" class="external-link" rel="nofollow">Installing Hudson</a></p>
+<h2>Configuring Hudson</h2>
+<p>Press New Job (Build a free-style software project)</p>
+<h4>Source Code Management</h4>
+<ol>
+<li>Copy read-only repository URL (from GitHub)</li>
+<li>Select Source Code Management system (e.g. GIT, paste URL)</li>
+<li>Press Advanced</li>
+<li>Select Skip internal tag</li>
+</ol>
+<h4>Add Build Step</h4>
+<ol>
+<li>Press Add Build Step</li>
+<li>Select Execute shell</li>
+<li>Add something like the following code
+<div class="code panel" style="border-width: 1px;">
+<div class="codeContent panelContent">
+<div>
+<div class="syntaxhighlighter nogutter  java">
+<table border="0">
+
+<tr>
+<td class="code">
+<div class="container" title="Hint: double-click to select code">
+<div class="line number1 index0 alt2"><code class="java plain">echo GOOGLE_PASSWORD | python2.</code><code class="java value">6</code> <code class="java plain">/usr/local/google_appengine/appcfg.py --email=GOOGLE_EMAIL --passin update $WORKSPACE</code></div>
+</div>
+</td>
+</tr>
+
+</table>
+</div>
+</div>
+</div>
+</div>
+</li>
+</ol>
+<div class="plupload html5" style="height: 0px; overflow: hidden;"><input type="file" style="" /></div>

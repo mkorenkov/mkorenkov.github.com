@@ -1,0 +1,24 @@
+---
+layout: post
+title: Mac OS Sync Services problem
+published: true
+---
+<p>Сегодня запустил iTunes и в очередной раз столкнулся с проблемой "iTunes cannot sync information with the iPad...". Не говорите, что это же Apple и такого не бывает.</p>
+<p>Симптомы, они же и пруфпики:</p>
+<p style="padding-left: 30px;">[[posterous-content:ggdcFiDavegIFeDFsuki]]</p>
+<p>&nbsp;</p>
+<p>В первый раз решение этой проблемы заняло несколько часов, сегодня - пару минут. Так что, быть может, сэкономлю кому-то время.<br /><!--more--></p>
+<p>Судя по всему, у меня есть такая проблема, поскольку я синхронизирую Адресную книгу между несколькими устройствами. Фактически, это взаимодействие осуществляется с помощью приложения iSync. В какой-то момент у него сносит крышу и оно делает что-то страшное во всех локальных местах, куда может дотянуться.</p>
+<p>Решение, которое я нашел в просторах интернета, говорит о следующем:</p>
+<p><strong>1.</strong> Удалить файл&nbsp;<strong>com.apple.syncserver.plist</strong></p>
+<p style="padding-left: 30px;"><strong>&nbsp;</strong><span style="color: #008000;">rm ~/Library/Preferences/com.apple.syncserver.plist</span></p>
+<p><strong>2.</strong> Удалить локальную папку для Sync сервисов.&nbsp;</p>
+<p style="padding-left: 30px;"><span style="color: #008000;">cd ~/Library/Application\ Support/SyncServices/</span></p>
+<p style="padding-left: 30px;"><span style="color: #008000;">rm -rf ./Local</span></p>
+<p><strong>3.</strong> Зажать Option (ALT) и кликнуть по иконке Sync Services. Выбрать "Reset Sync Services..."</p>
+<p style="padding-left: 30px;">[[posterous-content:mbnHtsCsogEFxJshjHdI]]</p>
+<p>&nbsp;</p>
+<p>Проверяем результат:</p>
+<p>Зажать Option (ALT) и кликнуть по иконке Sync Services. Выбрать "Open iSync..."</p>
+<p style="padding-left: 30px;">[[posterous-content:afqtapBbxcvBsFCkstyv]]</p>
+<p>Приложение должно запуститься. После этого мои устройства синхронизировались без проблем.</p>

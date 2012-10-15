@@ -1,0 +1,46 @@
+---
+layout: post
+title: Bridging interfaces
+published: true
+---
+<p>В процессе подготовки бойцов к одному из проектов, поставлена задача: настроить трафик между двумя виртуальные машинами таким образом, чтобы находясь в одной подсети и будучи подключеным к разным host only интерфейсам, они могли обмениваться информацией посредством bridge интерфейса на host машине.</p>
+<p>[[posterous-content:aFHikbidvwhtozsJExpx]]</p>
+<p>Если слово bridge у вас ассоциируется <span style="text-decoration: underline;">только</span> с картинкой выше, дальше можно не читать.</p>
+<p><!--more--></p>
+<p>Тестовый стенд.</p>
+<p>[[posterous-content:zxmzysoqqpIgmwwCmdhu]]</p>
+<p>Ubuntu Server <strong>srv1</strong>:</p>
+<blockquote class="posterous_short_quote">
+<p>ip 192.168.56.11/24</p>
+<p>gateway 192.168.56.1&nbsp;</p>
+<p>подключен к host-only интерфейсу vboxnet0:</p>
+<p>ip 192.168.56.1/24</p>
+</blockquote>
+<p>Ubuntu Server <strong>srv2</strong>:</p>
+<blockquote class="posterous_short_quote">
+<p>ip 192.168.56.111/24</p>
+<p>gateway 192.168.56.101&nbsp;</p>
+<p>подключен к host-only интерфейсу vboxnet1:</p>
+<p>ip 192.168.56.101/24</p>
+</blockquote>
+<p>После установки обеих операционных систем ping с srv1 до vboxnet0 ходит нормально, в отличие от комбинации srv2 и vboxnet1. Ну, это нормально (см. rounte -n на хост машине).</p>
+<p>Для начала, потушим 2 виртуальных интерфейса на хосте.</p>
+<div class="CodeRay">
+  <div class="code"><pre>ifconfig vboxnet0 down
+ifconfig vboxnet1 down</pre></div>
+</div>
+
+<p>Создадим bridge (<a href="http://system-administrators.info/?p=874">http://system-administrators.info/?p=874</a>)</p>
+<div class="CodeRay">
+  <div class="code"><pre>brctl addbr br0
+brctl addif br0 vboxnet0 vboxnet1</pre></div>
+</div>
+
+<p>Поднимем виртуальные интерфейсы в <a href="http://ru.wikipedia.org/wiki/Promiscuous_mode">неразборчивом</a> режиме.</p>
+<div class="CodeRay">
+  <div class="code"><pre>ifconfig vboxnet0 0.0.0.0 promisc up
+ifconfig vboxnet1 0.0.0.0 promisc up
+ifconfig br0 up</pre></div>
+</div>
+
+<p>Теперь стоит выключить и включить Virtual Box виртуальные машины. Этот шаг я объяснить не могу, хотя опытным путем убедился в его необходимости. Буду благодарен, если кто-либо осветит это темное место.</p>

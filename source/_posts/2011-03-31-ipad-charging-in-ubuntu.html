@@ -1,0 +1,25 @@
+---
+layout: post
+title: iPad charging in Ubuntu
+published: true
+---
+<blockquote>
+<p><em><span style="font-size: medium; color: #333399;">UPD. Permanently moved to:&nbsp;<a href="http://korenkov.info/pages/ipad-charge">http://korenkov.info/pages/ipad-charge</a></span></em></p>
+</blockquote>
+<p>Сегодня обнаружил, что мой iPad (первого поколения) не хотел заряжаться под Ubuntu 10.10.</p>
+<p>[[posterous-content:jIbyflzCwpetzABjxokb]]<!--more--></p>
+<p>После непродолжительных поисков обнаружил следующую статью:&nbsp;<a href="http://ubuntuguide.net/how-to-charge-ipad-on-ubuntu-linux-via-usb-ports">http://ubuntuguide.net/how-to-charge-ipad-on-ubuntu-linux-via-usb-ports</a></p>
+<p>В случае, если у вас архитектура системы amd64, достаточно установить:&nbsp;<a href="http://www.yourproblemsolved.com/sites/default/files/ipad-charge-1.0_20101231-1_amd64.deb.zip">http://www.yourproblemsolved.com/sites/default/files/ipad-charge-1.0_20101231-1_amd64.deb.zip</a></p>
+<p>Мне повезло меньше, у меня 32-битная система и количество шагов несколько больше:</p>
+<p><span style="font-family: helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 19px;"> </span></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install libusb-1.0-0 libusb-1.0-0-dev
+wget --no-check-certificate https://github.com/downloads/mkorenkov/ipad_charge/ipad_charge_1.0.tar.gz
+tar -xzf ipad_charge_1.0.tar.gz
+cd ./ipad_charge_1.0
+make
+sudo make install</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<p>После этого я вновь подключил iPad к USB и он стал чудненько заряжаться.</p>

@@ -1,0 +1,16 @@
+---
+layout: post
+title: Ubuntu 11.10 x64 fix Skype after update
+published: true
+---
+<p>После апдейта поломался скайп. Падает с ошибкой</p>
+<div class="CodeRay">
+  <div class="code"><pre>skype: error while loading shared libraries: libXss.so.1: cannot open shared object file: No such file or directory</pre></div>
+</div>
+
+<p>Есть зарепорченый баг в launchpad:&nbsp;<a href="https://bugs.launchpad.net/ubuntu/+source/ia32-libs/+bug/830440">https://bugs.launchpad.net/ubuntu/+source/ia32-libs/+bug/830440</a></p>
+<p>Лечить так:</p>
+<div class="CodeRay">
+  <div class="code"><pre>echo foreign-architecture i386 | sudo tee /etc/dpkg/dpkg.cfg.d/multiarch
+sudo apt-get install libxss1:i386 libqtcore4:i386 libqt4-dbus:i386 libqtgui4:i386</pre></div>
+</div>

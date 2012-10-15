@@ -1,0 +1,12 @@
+---
+layout: post
+title: Irresponsible deb packages removal
+published: true
+---
+<p>В процессе инсталляции CDMA-модема, я установил deb-пакет CrossPlatformUI-V1.0.27-BSNL-i386-ubuntu. К сожалению, этот пакет не решил мою проблему, при установке выдал невнятную ошибку и не стал работать. Удалить его тоже оказалось проблемой: ни визуальные средства, ни apt-get с dpkg не смогли помочь. В большинстве случаев я получал ошибку:</p>
+<blockquote>
+<p><span style="color: #333399;">I wasn't able to locate file for the crossplatformui package. This might mean you need to manually fix this package.</span>&nbsp;</p>
+</blockquote>
+<p>Для решения проблемы пришлось поправить пост-ремув скрипт и первой инструкцией впаять <strong>exit </strong>через</p>
+<p style="padding-left: 30px;"><span style="color: #333399;">cd /var/lib/dpkg/info/</span></p>
+<p style="padding-left: 30px;"><span style="color: #333399;">sudo gedit crossplatformui.postrm&nbsp;</span></p>

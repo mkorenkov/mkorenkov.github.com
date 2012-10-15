@@ -1,0 +1,48 @@
+---
+layout: post
+title: Ubuntu 12.04 Skype tray icon (Gnome 3)
+published: true
+---
+<p>Enabling Skype notification icon for Gnome 3 is a bit more difficult, than for <a href="http://korenkov.info/ubuntu-1204-skype-tray-icon">Unity</a>. Anyway, here how you do it.</p>
+<p><!--more--></p>
+<div class="CodeRay">
+  <div class="code"><pre>install gnome-tweak-tool mkdir ~/.local/share/gnome-shell/extensions/skype-status</pre></div>
+</div>
+
+<p>Edit <strong>~/.local/share/gnome-shell/extensions/skype-status/extension.js</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>nano ~/.local/share/gnome-shell/extensions/skype-status/extension.js</pre></div>
+</div>
+
+<p>And paste the following</p>
+<div class="CodeRay">
+  <div class="code"><pre>const StatusIconDispatcher = imports.ui.statusIconDispatcher;
+function enable() {
+    StatusIconDispatcher.STANDARD_TRAY_ICON_IMPLEMENTATIONS['skype'] = 'skype';
+}
+function disable() {
+    StatusIconDispatcher.STANDARD_TRAY_ICON_IMPLEMENTATIONS['skype'] = '';
+}
+function init() {
+}</pre></div>
+</div>
+
+<p>Now edit <strong>~/.local/share/gnome-shell/extensions/skype-status/metadata.json</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>nano ~/.local/share/gnome-shell/extensions/skype-status/metadata.json</pre></div>
+</div>
+
+<p>And insert</p>
+<div class="CodeRay">
+  <div class="code"><pre>{
+  &quot;shell-version&quot;: [&quot;3.4.1&quot;, &quot;3.2.1&quot;, &quot;3.2&quot;],
+  &quot;uuid&quot;: &quot;skype-status&quot;,
+  &quot;name&quot;: &quot;Skype Status Icon&quot;,
+  &quot;description&quot;: &quot;Integrates Skype Client into the status bar&quot;
+}</pre></div>
+</div>
+
+<p>where shell-version parameter corresponds to your current gnome shell version.</p>
+<p>You can find additional shell extensions after your Gnome 3 session is restarted. See Applications -&gt; Advanced Settings -&gt; Shell Extensions:</p>
+<p><img src="/images/articles/Skype-Icon-Extension.png" alt="Skype-Icon-Extension" title="Skype-Icon-Extension" /></p>
+<p>Turn it on and restart your session again. By the way, the same trick works for Pidgin as well. Source:&nbsp;<a href="http://habrahabr.ru/post/134542/">http://habrahabr.ru/post/134542/</a></p>

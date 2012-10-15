@@ -1,0 +1,38 @@
+---
+layout: post
+title: iPad / iPad2 charge Ubuntu
+published: true
+---
+<blockquote>
+<p><em><span style="font-size: medium; color: #333399;">UPD. Permanently moved to:&nbsp;<a href="http://korenkov.info/pages/ipad-charge">http://korenkov.info/pages/ipad-charge</a></span></em></p>
+</blockquote>
+<p>It appears the problem with Ubuntu and iPad / iPad2 USB charging is bringing attention. Thus, I would write about charging iPad and iPad2 under Ubuntu. This solution works well for Ubuntu 10.10 (Maverick Meerkat) and Ubuntu 11.04 (Natty Narwhal).</p>
+<p><!--more--></p>
+<p>There&rsquo;s a <a href="http://www.rainbow-software.org/linux_files/ipad_charge_1.0.tar.gz">program</a> created by Ondrej Zary from Rainbow-Software. It had some flaws, which were fixed here:&nbsp;<a href="https://github.com/mkorenkov/ipad_charge/">https://github.com/mkorenkov/ipad_charge/</a></p>
+<p><a href="https://github.com/mkorenkov/ipad_charge/"></a></p>
+<p><span style="text-decoration: underline;"><strong><span style="font-size: large;">Installation for iPad</span></strong></span></p>
+<p><span style="font-family: helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 19px;"> </span></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install libusb-1.0-0 libusb-1.0-0-dev
+wget --no-check-certificate https://github.com/downloads/mkorenkov/ipad_charge/ipad_charge_1.0.tar.gz
+tar -xzf ipad_charge_1.0.tar.gz
+cd ./ipad_charge_1.0
+make
+sudo make install</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<p><strong><span style="text-decoration: underline;"><span style="font-size: large;">Installation for iPad2</span></span></strong></p>
+<p><span style="font-family: helvetica, arial, freesans, clean, sans-serif; font-size: 14px; line-height: 19px;"> </span></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install libusb-1.0-0 libusb-1.0-0-dev
+wget --no-check-certificate https://github.com/downloads/mkorenkov/ipad_charge/ipad2_charge_1.0.tar.gz
+tar -xzf ipad2_charge_1.0.tar.gz
+cd ./ipad2_charge/
+make
+sudo make install</pre></div>
+</div>
+
+<p>&nbsp;</p>
+<p>Original discussion available here: <a href="http://ubuntuforums.org/showthread.php?t=1504845">http://ubuntuforums.org/showthread.php?t=1504845</a></p>
+<p>&nbsp;</p>

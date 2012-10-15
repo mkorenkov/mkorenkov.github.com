@@ -1,0 +1,28 @@
+---
+layout: post
+title: import svn repository into Google code project hosting
+published: true
+---
+<p>UPD: обнаружил у себя недописанную статью об svnsync. Публикую как есть.</p>
+<p>&nbsp;</p>
+<p>С недавнего времени, я стал практически фанатом <a href="http://github.com" title="GitHub">GitHub</a>. Даже не знаю, чем он меня подкупил. Просто комфортно.&nbsp;Я сделал импорт практически всех проектов. Но вот незадача: ограничение в 0,3 Gb. Поэтому, например, на лекции, лабораторные и всякую другую хрень, оставшиеся после университета, которые я недавно нашел на одном из серверов, было жалко расходовать этот лимит. <a href="http://code.google.com/hosting/">Project hosting on Google Code</a> предоставляет место более щедро: 4 Gb. В этом посте будет немного тескта о том, как сделать импорт сушествующего репозитория SVN в новый репозиторий на Google code.</p>
+<p>[[posterous-content:lqBAhoIJCftmjdFxdlhj]]</p>
+<p><!--more-->Первым делом, нужно <a href="http://code.google.com/hosting/createProject">создать проект</a>. Далее, перейти на вкладку Source -&gt; Checkout. Внизу страницы будет ссылка <span style="text-decoration: underline;">reset this repository</span>.</p>
+<p>[[posterous-content:vuFyuEivBunBqIDuismh]]</p>
+<p>Будет задан вопрос, насколько мы тверды в наших намерениях. Практически любой вариант ответа подразумевает, что мы не отступим. После этого Google code весело мигнет лампочками, докрутит правильные hooks и даст добро. Далее дело за <a href="http://www.opennet.ru/base/dev/svnsync.txt.html" style="font-weight: bold;">svnsync</a>.</p>
+<p>Последовательность команд следующая: svnsync init, svnsync sync.</p>
+<blockquote>
+<p><span style="color: #008000;">svnsync init DEST_URL SOURCE_URL</span></p>
+<p><span style="color: #008000;">svnsync sync DEST_URL</span></p>
+</blockquote>
+<p>Подробнее можно прочитать, например, вот здесь:&nbsp;<a href="http://www.opennet.ru/base/dev/svnsync.txt.html">http://www.opennet.ru/base/dev/svnsync.txt.html</a></p>
+<p>[[posterous-content:CGguipagryDvmotzjeHC]]</p>
+<p>В какой-то момент может возникнуть ошибка:</p>
+<blockquote>
+<p><span style="color: #008000;">Failed to get lock on destination repos, currently held by 'angelina:f817fda6-1d02-4d71-8c6d-be7880c7c5c7'</span></p>
+</blockquote>
+<p><span style="color: #000000;">Нужно просто удалить lock с destination репозитория. Например, вот так:</span></p>
+<blockquote>
+<p><span style="color: #008000;">svn propdel svn:sync-lock --revprop -r 0 <a href="https://university-bullshit.googlecode.com/svn/">https://university-bullshit.googlecode.com/svn/</a></span></p>
+</blockquote>
+<p>И продолжить svnsync sync.</p>

@@ -1,0 +1,19 @@
+---
+layout: post
+title: Encode, decode URL App Engine
+published: true
+---
+<p>from <a href="http://blog.guya.net/2010/07/06/encode-and-decode-urls-in-python-for-google-appengine/">http://blog.guya.net/2010/07/06/encode-and-decode-urls-in-python-for-google-appengine/</a></p>
+<div class="CodeRay">
+  <div class="code"><pre>import urllib
+
+text = 'some text'
+
+#decodeURI
+text = urllib.unquote(text.encode('ascii')).decode('utf-8')
+
+#encodeURI
+text = urllib.quote(text.encode('utf-8'))</pre></div>
+</div>
+
+<p>&nbsp;</p>

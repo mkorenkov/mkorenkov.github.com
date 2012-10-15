@@ -1,0 +1,13 @@
+---
+layout: post
+title: Fetching updates from another git repo
+published: true
+---
+<p>Original article:&nbsp;<a href="http://bassistance.de/2010/06/25/git-fu-updating-your-github-fork/">http://bassistance.de/2010/06/25/git-fu-updating-your-github-fork/</a></p>
+<p>Чувствую, еще не раз пригодится. Обновить source код вашего fork репозитория можно так:</p>
+<div class="CodeRay">
+  <div class="code"><pre>git remote add --track master source git://github.com/openstack/tempest.git
+git fetch source
+git merge source/master
+git push</pre></div>
+</div>

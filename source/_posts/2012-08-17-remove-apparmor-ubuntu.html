@@ -1,0 +1,11 @@
+---
+layout: post
+title: Remove AppArmor Ubuntu
+published: true
+---
+<p>You can remove AppArmor from Ubuntu executing the following commands:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo /etc/init.d/apparmor stop
+sudo update-rc.d -f apparmor remove
+sudo apt-get remove apparmor apparmor-utils -y</pre></div>
+</div>

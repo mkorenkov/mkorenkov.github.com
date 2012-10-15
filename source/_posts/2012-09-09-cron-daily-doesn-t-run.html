@@ -1,0 +1,19 @@
+---
+layout: post
+title: cron.daily doesn't run
+published: true
+---
+<p>All of you guys use some kind of backups. And if you don't you should probably consider that. Daily, weekly, whatever. That really depends on the data you have.</p>
+<p>And I've found really weird problem: my daily backup script didn't run. I tested it by running manually and it worked fine. I was curious. I've put it into hourly folder. And guess what, still no luck.</p>
+<p>I tried to test it:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo su
+cd / &amp;&amp; run-parts --report /etc/cron.hourly/</pre></div>
+</div>
+
+<p>And there was no output as if it was ignored. Finally, I came across this topic:&nbsp;<a href="http://ubuntuforums.org/showthread.php?t=1692727">http://ubuntuforums.org/showthread.php?t=1692727</a></p>
+<p>Long story short:</p>
+<blockquote class="posterous_medium_quote">
+<p>Unlike some other systems like RedHat/Fedora/etc, run-parts under Debian or Ubuntu systems will ignore files with dots or most other characters in their name, meaning some or all of your scripts in run-parts folders such as /etc/cron.daily will not be run. For example /etc/cron.daily/backup.sh will never be run with the default way that /etc/crontab is set up.</p>
+</blockquote>
+<p>&nbsp;</p>

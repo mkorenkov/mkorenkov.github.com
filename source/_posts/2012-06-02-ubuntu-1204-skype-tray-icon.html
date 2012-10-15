@@ -1,0 +1,17 @@
+---
+layout: post
+title: Ubuntu 12.04 Skype tray icon (Unity)
+published: true
+---
+<p>This trick is valid for Ubuntu 12.04 as well (<a href="http://korenkov.info/ubuntu-1110-skype-notification-icon">http://korenkov.info/ubuntu-1110-skype-notification-icon</a>)</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install dconf-tools
+dconf-editor</pre></div>
+</div>
+
+<p>Modify <strong>systray-whitelist</strong> option in <strong>desktop -&gt; unity -&gt; panel</strong> section. E.g.:</p>
+<div class="CodeRay">
+  <div class="code"><pre>['Guake', 'Skype', 'Dropbox', 'JavaEmbeddedFrame', 'Wine', 'Update-notifier']</pre></div>
+</div>
+
+<p>After you restart you session, Skype icon should be available.</p>

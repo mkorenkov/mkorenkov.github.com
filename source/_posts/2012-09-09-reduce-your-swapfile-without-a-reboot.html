@@ -1,0 +1,71 @@
+---
+layout: post
+title: Reduce your swapfile without a reboot
+published: false
+---
+<p>Swap: &nbsp; &nbsp; &nbsp; &nbsp;98272 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; &nbsp;98272</p>
+<p>Swap: &nbsp; &nbsp; &nbsp; 104639 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; 104639</p>
+<p>&nbsp;</p>
+<p>Check how often your system uses swap:</p>
+<p>sudo cat /proc/sys/vm/swappiness</p>
+<p>set it to 10</p>
+<p>sudo sysctl vm.swappiness=10</p>
+<p>Swap: &nbsp; &nbsp; &nbsp; &nbsp; 6366 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; &nbsp; 6366</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>parted /dev/sda</p>
+<p>print list</p>
+<p>&nbsp;</p>
+<p>(parted) rm 5</p>
+<p>(parted) mkpart logical 24.0GB 100GB</p>
+<p>(parted) mkpart logical 100GB 127GB&nbsp;</p>
+<p>(parted) print list</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>sudo mkswap /dev/sda6</p>
+<p>sudo swapon /dev/sda6</p>
+<p>free -m | grep Swap</p>
+<p>Swap: &nbsp; &nbsp; &nbsp; &nbsp;32113 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; &nbsp;32113</p>
+<p>Change so after reboot we will have working swap</p>
+<p>sudo vim /etc/fstab</p>
+<p>&nbsp;</p>
+<p># swap was on /dev/sda5 during installation</p>
+<p>/dev/sda6 none &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;swap &nbsp; &nbsp;sw &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; &nbsp; 0</p>
+<p />
+<p />
+<div>Now we can turn off our swapfile1:</div>
+<div>sudo swapoff /swapfile1</div>
+<div>
+<div>free -m | grep Swap</div>
+<div>Swap: &nbsp; &nbsp; &nbsp; &nbsp;25746 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;0 &nbsp; &nbsp; &nbsp;25746</div>
+</div>
+<p />
+<div>And restore swappiness to default</div>
+<div>sudo sysctl vm.swappiness=60</div>
+<p />
+<p />
+<div>sudo apt-get install lvm2</div>
+<div>sudo vgcreate prod7 /dev/sda5</div>
+<div>sudo vgdisplay</div>
+<div>sudo lvcreate -L 30G -n logs prod7</div>
+<p />
+<div>
+<div class="CodeRay">
+  <div class="code"><pre>sudo mkfs.ext3 -m 0 /dev/prod7/logs</pre></div>
+</div>
+
+<p style="margin: 5px 0px; padding: 0px; line-height: 1.4em; font-family: arial, helvetica, sans-serif;">the -m option specifies the percentage reserved for the super-user, set this to 0 if you wish not to waste any space, the default is 5%.</p>
+<p style="margin: 5px 0px; padding: 0px; line-height: 1.4em; font-family: arial, helvetica, sans-serif;">&nbsp;</p>
+<p style="margin: 5px 0px; padding: 0px;"><span style="font-family: arial, helvetica, sans-serif;"><span style="line-height: 18.200000762939453px;">sudo mount -t ext3 /dev/prod7/logs /tmp/logs</span></span></p>
+<p style="margin: 5px 0px; padding: 0px;"><span style="font-family: arial, helvetica, sans-serif;"><span style="line-height: 18.200000762939453px;">sudo cp -R /var/log/* /tmp/logs/</span></span></p>
+<p style="margin: 5px 0px; padding: 0px;"><span style="font-family: arial, helvetica, sans-serif;"><span style="line-height: 18.200000762939453px;">sudo umount /tmp/logs</span></span></p>
+<p style="margin: 5px 0px; padding: 0px;"><span style="font-family: arial, helvetica, sans-serif;"><span style="line-height: 18.200000762939453px;">sudo mount -t ext3 /dev/prod7/logs /var/log</span></span></p>
+<p style="margin: 5px 0px; padding: 0px;">&nbsp;</p>
+<p style="margin: 5px 0px; padding: 0px;">sudo vim /etc/fstab</p>
+<p style="margin: 5px 0px; padding: 0px;"><span style="font-family: arial, helvetica, sans-serif;"> </span></p>
+<p style="margin: 5px 0px; padding: 0px;"><span style="line-height: 18.200000762939453px;"># logs on /dev/prod7/logs</span></p>
+<p style="margin: 5px 0px; padding: 0px;"><span style="line-height: 18.200000762939453px;">/dev/prod7/logs /var/log ext3 defaults 0 2</span></p>
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>

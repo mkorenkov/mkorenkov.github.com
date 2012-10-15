@@ -1,0 +1,8 @@
+---
+layout: post
+title: Install Ruby on Rails on Amazon Linux
+published: false
+---
+
+  <pre>sudo yum update rubysudo yum install rubygems
+sudo gem update --systemsudo yum install -y libxml2 libxml2-devel libxslt libxslt-develsudo yum install gcc ruby-devel makesudo gem install jsonsudo yum install mysql mysql-develsudo yum install -y postgresql-develsudo gem install railssudo yum install mysql-serversudo service mysqld startsudo /usr/bin/mysql_secure_installationrake db:create RAILS_ENV=&quot;production&quot;rake db:migrate RAILS_ENV=&quot;production&quot;sudo rails server -p 80 -e production</pre>

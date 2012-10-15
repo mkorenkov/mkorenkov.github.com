@@ -1,0 +1,59 @@
+---
+layout: post
+title: OpenStack testing setup with devstack and tempest
+published: true
+---
+<p>If you have ever made any changes into <a href="http://openstack.org/">OpenStack</a> code, you will wonder how to test it. Even if you run unit tests before committing changes, this is not enough. Such complex system requires some level of integration testing. There is an OpenStack project called <a href="https://github.com/openstack/tempest">tempest</a>. That is OpenStack integration test suite.</p>
+<p><img src="/images/articles/openstack/logo.jpg" alt="OpenStack logo" title="OpenStack logo" /></p>
+<p>This project is not the first try to do integration tests in OpenStack, however, it selected to be the standard one. It is not yet mature and it leaves some servers running after it is completed.&nbsp;Further more, running tempest takes a lot of time, so it is clear nobody will run it before commit or push.</p>
+<p>Those kind of testing you will probably do via Continious Integration server. And&nbsp;I will describe how to create an isolated test box with <a href="http://vagrantup.com/">vagrant</a>, <a href="http://www.opscode.com/chef/">chef</a> and <a href="http://devstack.org/">devstack</a> for testing purposes.</p>
+<p><!--more--></p>
+<p>If you already have a vagrant installed, you can skip to step #3.</p>
+<p>1. <a href="https://www.virtualbox.org/wiki/Linux_Downloads">Install VirtualBox</a></p>
+<p>2. <a href="http://vagrantup.com/docs/getting-started/index.html">Install Vagrant</a></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo aptitude install ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8 libreadline-ruby1.8 libruby1.8 libopenssl-ruby wget rubygems
+sudo update-alternatives --config ruby
+sudo REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+sudo gem install vagrant</pre></div>
+</div>
+
+<p>3. Adding a base image</p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant box add os-oneiric http://vagrant.mirantis.com/files/os-oneiric.box</pre></div>
+</div>
+
+<p>4. Moving vagrant out of home (optional)</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo mkdir /media/VMs
+sudo chown $USER:root /media/VMs
+mkdir /media/VMs/vagrant/
+mv ~/.vagrant.d/* /media/VMs/vagrant/
+rm -rf ~/.vagrant.d/
+ln -s /media/VMs/vagrant/ ~/.vagrant.d</pre></div>
+</div>
+
+<p>5. Cloning wheel repo</p>
+<div class="CodeRay">
+  <div class="code"><pre>git clone git://github.com/mkorenkov/wheel.git</pre></div>
+</div>
+
+<p>6. Change Vagrantfile</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd wheel
+vim Vagrantfile</pre></div>
+</div>
+
+<p>7. And check the following recipes are enabled</p>
+<div class="CodeRay">
+  <div class="code"><pre>chef.add_recipe &quot;wheel::stack&quot;
+chef.add_recipe &quot;wheel::tempest&quot;</pre></div>
+</div>
+
+<p>8. Run setup</p>
+<div class="CodeRay">
+  <div class="code"><pre>cd wheel
+vagrant up openstack</pre></div>
+</div>
+
+<p>It will automatically install you an OpenStack and run tempest over it. Code of the recipes is pretty simple and comprehensive (available at&nbsp;<a href="https://github.com/mkorenkov/wheel">https://github.com/mkorenkov/wheel</a>).&nbsp;</p>

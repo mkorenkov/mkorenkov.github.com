@@ -1,0 +1,23 @@
+---
+layout: post
+title: nopasswd for sudoers
+published: true
+---
+<p>Сделать sudo беспарольным операция вполне обычная. Но я как-то устал каждый раз набирать в гугле что да как.</p>
+<p>1. Добавляем себя в sudo группу для Ubuntu. (для Fedora можно wheel)</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo usermod -a -G sudo $USER</pre></div>
+</div>
+
+<p>2. Редактируем /etc/sudoers</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo vim /etc/sudoers</pre></div>
+</div>
+
+<p>строчка с %sudo должна принять вид. (для Fedora %wheel опять-же)</p>
+<div class="CodeRay">
+  <div class="code"><pre>%sudo ALL=(ALL) NOPASSWD: ALL</pre></div>
+</div>
+
+<p>Спасибонезачто.</p>
+<p>&nbsp;</p>

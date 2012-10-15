@@ -1,0 +1,12 @@
+---
+layout: post
+title: OS X in VirtualBox - fix resolution
+published: true
+---
+<p>There's an easy way to fix resolution of your guest VirtualMachine.</p>
+<p>You should execute something like the following command on your host machine:</p>
+<div class="CodeRay">
+  <div class="code"><pre>VBoxManage setextradata osx CustomVideoMode1 &quot;1920x1080x32&quot;</pre></div>
+</div>
+
+<p>Where "osx" is your virtual machine name and "1920x1080x32" is your target resolution.</p>

@@ -1,0 +1,14 @@
+---
+layout: post
+title: Disable the Universal Access accessibility menu in Gnome 3
+published: true
+---
+<p>The only way I found to edit the file&nbsp;/usr/share/gnome-shell/js/ui/panel.js</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo nano /usr/share/gnome-shell/js/ui/panel.js</pre></div>
+</div>
+
+<p>And comment (or remove) all the lines, that look like this:</p>
+<div class="CodeRay">
+  <div class="code"><pre>'a11y': imports.ui.status.accessibility.ATIndicator,</pre></div>
+</div>

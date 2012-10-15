@@ -1,0 +1,20 @@
+---
+layout: post
+title: UPD. Charge iPad/iPad2 with Ubuntu
+published: true
+---
+<blockquote>
+<p><em><span style="font-size: medium; color: #333399;">UPD. Permanently moved to:&nbsp;<a href="http://korenkov.info/pages/ipad-charge">http://korenkov.info/pages/ipad-charge</a></span></em></p>
+</blockquote>
+<p>For those, who are interested.</p>
+<p>There was a <a href="https://github.com/mkorenkov/ipad_charge/pull/2">patch</a> by&nbsp;<a href="https://github.com/dirigeant">dirigeant</a>&nbsp;that allows you charge both iPad and iPad2 with a single Ubuntu computer.</p>
+<p>[[posterous-content:CEixbgfvbEDrlxduHwoA]]</p>
+<p><!--more-->Installation instructions:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install libusb-1.0-0 libusb-1.0-0-dev
+wget --no-check-certificate https://github.com/downloads/mkorenkov/ipad_charge/ipad_charge.tar.gz
+tar -xzf ipad_charge.tar.gz
+cd ./ipad_charge
+make
+sudo make install</pre></div>
+</div>

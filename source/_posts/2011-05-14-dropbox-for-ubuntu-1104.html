@@ -1,0 +1,15 @@
+---
+layout: post
+title: Dropbox for Ubuntu 11.04
+published: true
+---
+<p>Во время установки Dropbox под Ubuntu 11.04 по вот этой инструкции&nbsp;<a href="http://usefree.com.ua/poleznye-programmy-2/dropbox-indicator-ubuntu-1104.html">http://usefree.com.ua/poleznye-programmy-2/dropbox-indicator-ubuntu-1104.html</a> обнаружилось, что step4 выдает ошибку 404. Но есть и другое решение.</p>
+<p><!--more-->1. Установить Dropbox deb (пропустить, если установлен):&nbsp;<a href="https://www.dropbox.com/downloading?os=lnx">https://www.dropbox.com/downloading?os=lnx</a></p>
+<p>2. Запустить терминал и выполнить следующее:</p>
+<div class="CodeRay">
+  <div class="code"><pre>wget http://webupd8.googlecode.com/files/fixdropbox
+chmod +x fixdropbox
+./fixdropbox</pre></div>
+</div>
+
+<p>3. Success! Далее dropbox заново скачает себя, установит, а вновь созданный файл .dropbox.sh будет запускать dropbox с 20 секундной задержкой после вашего входа в систему.</p>

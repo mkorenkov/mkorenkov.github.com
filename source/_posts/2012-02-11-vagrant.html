@@ -1,0 +1,63 @@
+---
+layout: post
+title: Vagrant
+published: true
+---
+<p>Сел разбираться с <a href="http://www.opscode.com/chef/">Chef</a>. Первый рецепт готов. Пора проверять... но где?</p>
+<p>Отладить на домашнем десктопе - неправильно, снесу - что-нибудь, жалко будет. Значит, запускаем <a href="https://www.virtualbox.org/">VirtualBox</a> и плодим виртуалки. Но когда это восьмая и девятая, начинаешь задумываться - а нет ли management механизма для этого.&nbsp;</p>
+<p><img src="/img/articles/vagrant_chilling.png" alt="Vagrant logo" title="Vagrant logo" /></p>
+<p>Особо циничный читатель уже понимает, что такой механизм есть и именно о нем я собираюсь рассказать в текущем посте.</p>
+<p><!--more--></p>
+<p>Vagrant - это ruby gem для управления машинками VirtualBox. Но особая его прелесть в том, что он из коробки поддерживает Puppet и Chef. Это превращает его просто в must-have tool. Например, так можно поднять VM с Ubuntu 10.04:</p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+vagrant init lucid32
+vagrant up</pre></div>
+</div>
+
+<p>При этом, базовый образ скачается только 1 раз.</p>
+<p>Итак, инсталляция:</p>
+<p><strong>1. Установка <a href="https://www.virtualbox.org/wiki/Linux_Downloads">VirtualBox</a></strong></p>
+<p><strong>2. Vagrant</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo aptitude install ruby1.8-dev ruby1.8 ri1.8 rdoc1.8 irb1.8 libreadline-ruby1.8 libruby1.8 libopenssl-ruby wget rubygems
+sudo update-alternatives --config ruby
+sudo REALLY_GEM_UPDATE_SYSTEM=1 gem update --system
+sudo gem install vagrant</pre></div>
+</div>
+
+<p><strong>3. Зарегистрируем базовый image</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant box add lucid32 http://files.vagrantup.com/lucid32.box</pre></div>
+</div>
+
+<p><strong>4. Переместим Vagrant из home директории в более концептуальное место</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo mkdir /media/VMs
+sudo chown $USER:root /media/VMs
+mkdir /media/VMs/vagrant/
+mv ~/.vagrant.d/* /media/VMs/vagrant/
+rm -rf ~/.vagrant.d/
+ln -s /media/VMs/vagrant/ ~/.vagrant.d</pre></div>
+</div>
+
+<p><strong>5. Запуск</strong></p>
+<div class="CodeRay">
+  <div class="code"><pre>vagrant init lucid32
+vagrant up</pre></div>
+</div>
+
+<p>После запуска, вы увидите сообщение с портом, на который форвардится ssh вновь созданной VM. Заходим (пароль <strong>vagrant</strong>):</p>
+<div class="CodeRay">
+  <div class="code"><pre>ssh vagrant@127.0.0.1 -p 2222</pre></div>
+</div>
+
+<p>Для создания базовых образов можно воспользоваться следующитми руководствами:</p>
+<ul>
+<li><a href="http://www.yodi.me/blog/2011/10/26/build-base-box-vagrant-ubuntu-oneiric-11.10-server/">http://www.yodi.me/blog/2011/10/26/build-base-box-vagrant-ubuntu-oneiric-11.10-server/</a></li>
+<li><a href="http://vagrantup.com/docs/base_boxes.html">http://vagrantup.com/docs/base_boxes.html</a></li>
+</ul>
+<p>Или воспользоваться уже существующей коллекцией: <a href="http://vagrantbox.es/">http://vagrantbox.es/</a>.</p>
+<p><strong>UPD:</strong></p>
+<p><iframe src="http://player.vimeo.com/video/9976342?title=0&amp;byline=0&amp;portrait=0" frameborder="0" height="225" width="400"></iframe></p>
+<p><a href="http://vimeo.com/9976342">Vagrant - Getting Started</a> from <a href="http://vimeo.com/mitchellh">Mitchell Hashimoto</a> on <a href="http://vimeo.com">Vimeo</a>.</p>

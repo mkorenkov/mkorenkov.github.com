@@ -1,0 +1,11 @@
+---
+layout: post
+title: Ubuntu 11.10 sun-java6-jdk
+published: true
+---
+<p>Just find out, that sun-java6-jdk is no longer present in Ubuntu 11.10 repositories. There's quite easy solution for that:</p>
+<pre>sudo add-apt-repository ppa:ferramroberto/java
+sudo apt-get update
+sudo apt-get install sun-java6-jdk sun-java6-plugin
+sudo update-alternatives --config java</pre>
+<p>Now you can select java you like. Enjoy.</p>

@@ -1,0 +1,30 @@
+---
+layout: post
+title: music.google.com unsupported country
+published: true
+---
+<p>UPD. Статья на engadget о Tor + music.google.com: <a href="http://www.engadget.com/2011/11/19/how-to-use-google-music-from-anywhere-yes-outside-of-the-unit/">http://www.engadget.com/2011/11/19/how-to-use-google-music-from-anywhere-yes-outside-of-the-unit/</a></p>
+<p><img src="/images/articles/music-beta-by-google.png" alt="music.google.com logo" title="music.google.com" /></p>
+<p>Вчера сидели у Толика, слушали музыку c <a href="http://music.google.com/">music.google.com</a>. Попытавшись зарегистрировать для себя, получил отказ - Unsupported country. Все для страны победившего капитализма, значит. Решим эту проблему на примере Ubuntu.</p>
+<p><!--more--></p>
+<p>Потыкавшись в разные анонимные web proxy, выяснилось, что они не поддерживают javascript. Рабочую proxy на территории США найти с пол-пинка не удалось. На помощь пришел <a href="https://www.torproject.org/docs/debian">Tor</a> <span style="text-decoration: line-through;">сразу после победы над ледяными гигантами</span>. Проект Тор - это сеть виртуальных туннелей по всему миру для повышения анонимности тех, кому нужно.</p>
+<p>Итак, установим себе Tor и <a href="https://www.torproject.org/projects/vidalia.html.en">Vidalia</a>&nbsp;- GUI к нему:</p>
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install tor tor-geoipdb vidalia</pre></div>
+</div>
+
+<p>Через System Preferences \ Network настраиваем proxy-сервер.</p>
+<div class="CodeRay">
+  <div class="code"><pre>127.0.0.1:9050</pre></div>
+</div>
+
+<p>Запускаем Vidalia, ищем хосты в США (Browse Network). Во вкладке Advanced редактируем torrc, заполняя реальными данными:</p>
+<div class="CodeRay">
+  <div class="code"><pre>ExitNodes server1, server2, server3
+StrictExitNodes 1</pre></div>
+</div>
+
+<p>Перезапускаем tor и идем регистрироваться на <a href="http://music.google.com/">music.google.com</a>.</p>
+<div class="CodeRay">
+  <div class="code"><pre>Profit!</pre></div>
+</div>

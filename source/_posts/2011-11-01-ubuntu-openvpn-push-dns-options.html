@@ -1,0 +1,13 @@
+---
+layout: post
+title: Ubuntu openvpn push DNS options
+published: true
+---
+<p>По умолчанию, Ubuntu не просасывает DNS опции через openvpn. В логах прекрасно видно, что опции приезжают, но /etc/resolv.conf при этом не обновляется. Исправляется так:</p>
+<pre>sudo aptitude install resolvconf
+sudo mv /etc/resolv.conf /etc/resolv.conf.orig
+sudo ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf</pre>
+<p>Теперь в конфигурационный файл клиента нужно добавить 2 строчки:</p>
+<pre>up /etc/openvpn/update-resolv-conf
+down /etc/openvpn/update-resolv-conf</pre>
+<p>Оригинал доступен здесь:&nbsp;<a href="http://plug.4aero.com/Members/lmarzke/howto/openvpn-push-dns">http://plug.4aero.com/Members/lmarzke/howto/openvpn-push-dns</a></p>
