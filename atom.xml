@@ -4,7 +4,7 @@
   <title><![CDATA[ibo.ezhe]]></title>
   <link href="http://mkorenkov.github.com/atom.xml" rel="self"/>
   <link href="http://mkorenkov.github.com/"/>
-  <updated>2012-10-15T03:30:17+03:00</updated>
+  <updated>2012-10-15T11:10:09+03:00</updated>
   <id>http://mkorenkov.github.com/</id>
   <author>
     <name><![CDATA[Max Korenkov]]></name>
@@ -439,7 +439,7 @@ vagrant up openstack</pre></div>
     <id>http://mkorenkov.github.com/vagrant</id>
     <content type="html"><![CDATA[<p>Сел разбираться с <a href="http://www.opscode.com/chef/">Chef</a>. Первый рецепт готов. Пора проверять&#8230; но где?</p>
 <p>Отладить на домашнем десктопе - неправильно, снесу - что-нибудь, жалко будет. Значит, запускаем <a href="https://www.virtualbox.org/">VirtualBox</a> и плодим виртуалки. Но когда это восьмая и девятая, начинаешь задумываться - а нет ли management механизма для этого.&nbsp;</p>
-<p><img src="http://mkorenkov.github.com/img/articles/vagrant_chilling.png" alt="Vagrant logo" title="Vagrant logo" /></p>
+<p><img src="http://mkorenkov.github.com/image/articles/vagrant_chilling.png" alt="Vagrant logo" title="Vagrant logo" /></p>
 <p>Особо циничный читатель уже понимает, что такой механизм есть и именно о нем я собираюсь рассказать в текущем посте.</p>
 <p><!--more--></p>
 <p>Vagrant - это ruby gem для управления машинками VirtualBox. Но особая его прелесть в том, что он из коробки поддерживает Puppet и Chef. Это превращает его просто в must-have tool. Например, так можно поднять VM с Ubuntu 10.04:</p>
